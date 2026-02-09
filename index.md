@@ -48,7 +48,7 @@ working on smart materials, lithium battery modeling, and physics-informed machi
 ---
 
 ## Curriculum Vitae
-[Download CV](CV.pdf)
+[Download CV](Mehrab_Summer_Intern_OU_2026.pdf)
 
 ---
 
