@@ -4,7 +4,7 @@ author_profile: true
 ---
 
 
-# Mehrab Hasan
+
 
 PhD researcher in Aerospace & Mechanical Engineering at the University of Oklahoma, 
 working on smart materials, lithium battery modeling, and physics-informed machine learning.
