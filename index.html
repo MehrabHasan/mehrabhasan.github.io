@@ -275,10 +275,14 @@
     .skill-tag.accent3 { border-color: rgba(46, 232, 158, 0.3); }
     .skill-tag.accent3:hover { border-color: var(--accent3); color: var(--accent3); }
 
+   
     #research { background: var(--bg-dark); }
     .research-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr));
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
     .research-card {
       padding: 32px 28px; border-radius: var(--radius);
@@ -488,10 +492,12 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo-wrapper { max-width: 240px; margin: 0 auto; }
-      .research-grid { grid-template-columns: repeat(2, 1fr); }
+  
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn { width: 100%; justify-content: center; }
+      .research-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links {
