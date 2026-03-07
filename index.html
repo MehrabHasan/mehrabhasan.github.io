@@ -14,7 +14,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Favicon (inline SVG) -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
 
   <style>
@@ -434,16 +434,144 @@
 
     /* ===== ACTIVITIES ===== */
     #activities { background: var(--bg-section); }
-    .activities-placeholder {
-      max-width: 600px; margin: 0 auto; text-align: center;
-      padding: 60px 32px; border-radius: var(--radius);
-      background: var(--bg-card); border: 1px dashed rgba(100, 130, 200, 0.2);
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .activities-placeholder i {
-      font-size: 2.5rem; color: var(--accent2); margin-bottom: 16px;
+    .activity-card {
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
     }
-    .activities-placeholder p {
-      color: var(--text-dim); font-size: 1rem;
+    .activity-card:hover {
+      border-color: rgba(0, 119, 181, 0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3),
+                  0 0 0 1px rgba(0, 119, 181, 0.15);
+    }
+
+    /* Thumbnail */
+    .activity-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      background: rgba(17, 22, 40, 0.8);
+    }
+    .activity-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .activity-card:hover .activity-img {
+      transform: scale(1.06);
+      filter: brightness(0.55);
+    }
+
+    /* Hover overlay */
+    .activity-img-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+    .activity-card:hover .activity-img-overlay {
+      opacity: 1;
+    }
+    .activity-img-overlay i {
+      font-size: 2rem;
+      color: #0a66c2;
+      background: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .activity-img-overlay span {
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* Badge */
+    .activity-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 3;
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: rgba(10, 102, 194, 0.9);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Body */
+    .activity-body {
+      padding: 24px 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .activity-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .activity-body p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .activity-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: var(--transition);
+    }
+    .activity-read-more i {
+      font-size: 0.75rem;
+      transition: transform 0.3s ease;
+    }
+    .activity-card:hover .activity-read-more {
+      color: #0a66c2;
+    }
+    .activity-card:hover .activity-read-more i {
+      transform: translateX(4px);
     }
 
     /* ===== CONTACT ===== */
@@ -533,6 +661,7 @@
       .hero-btns { flex-direction: column; align-items: center; }
       .btn { width: 100%; justify-content: center; }
       .research-grid { grid-template-columns: 1fr; }
+      .activities-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -574,7 +703,7 @@
       </p>
       <div class="hero-tags">
         <span class="hero-tag">Shape Memory Composites</span>
-        <span class="hero-tag">Li-ion & Li-metal Batteries</span>
+        <span class="hero-tag">Li-ion &amp; Li-metal Batteries</span>
         <span class="hero-tag">Physics-Informed ML</span>
         <span class="hero-tag">Additive Manufacturing</span>
       </div>
@@ -637,7 +766,6 @@
               <p class="school">University of North Texas, Denton, TX</p>
               <p class="year">2023 – 2024</p>
             </div>
-            <!-- Add more education as needed -->
           </div>
 
           <div class="skills-wrap reveal">
@@ -816,13 +944,37 @@
   <section id="activities">
     <div class="container">
       <div class="section-header reveal">
-        <p class="section-label">Beyond Research</p>
+        <p class="section-label">News</p>
         <h2 class="section-title">Activities</h2>
         <div class="section-line"></div>
       </div>
-      <div class="activities-placeholder reveal">
-        <i class="fa-solid fa-flask-vial"></i>
-        <p>Coming soon — this section will be updated with conferences, outreach, leadership, and other professional activities.</p>
+      <div class="activities-grid">
+
+        <!-- LinkedIn Post Card 1 -->
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7432961166097956865/"
+           target="_blank" rel="noopener noreferrer"
+           class="activity-card reveal">
+          <div class="activity-img-wrapper">
+            <img src="assets/linkedin-post-1.jpg" alt="LinkedIn Post" class="activity-img" />
+            <div class="activity-img-overlay">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <span>Read on LinkedIn</span>
+            </div>
+            <span class="activity-badge">
+              <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </span>
+          </div>
+          <div class="activity-body">
+            <h3>Research Highlight</h3>
+            <p>A post about my recent research work and findings — click to read the full post on LinkedIn.</p>
+            <span class="activity-read-more">
+              View Post <i class="fa-solid fa-arrow-right"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- ADD MORE POSTS: Copy the block above, change href, img src, title, description -->
+
       </div>
     </div>
   </section>
@@ -873,153 +1025,142 @@
     'use strict';
 
     /* --- Loader --- */
-    window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 400);
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('loader').classList.add('hidden');
+      }, 400);
     });
 
     /* --- Navbar scroll --- */
-    const navbar = document.getElementById('navbar');
-    const progressBar = document.getElementById('scrollProgress');
-    const sections = document.querySelectorAll('section[id]');
-    const navLinksAll = document.querySelectorAll('.nav-links a');
+    var navbar = document.getElementById('navbar');
+    var progressBar = document.getElementById('scrollProgress');
+    var sections = document.querySelectorAll('section[id]');
+    var navLinksAll = document.querySelectorAll('.nav-links a');
 
     function onScroll() {
-      const scrollY = window.scrollY;
+      var scrollY = window.scrollY;
       // navbar style
-      navbar.classList.toggle('scrolled', scrollY > 50);
+      if (scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
       // progress bar
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
       progressBar.style.width = (scrollY / docHeight * 100) + '%';
       // active link
-      let current = '';
-      sections.forEach(sec => {
+      var current = '';
+      sections.forEach(function (sec) {
         if (scrollY >= sec.offsetTop - 200) current = sec.id;
       });
-      navLinksAll.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      navLinksAll.forEach(function (a) {
+        if (a.getAttribute('href') === '#' + current) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
       });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
     /* --- Mobile menu --- */
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
+    var hamburger = document.getElementById('hamburger');
+    var navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', function () {
       hamburger.classList.toggle('open');
       navLinks.classList.toggle('open');
     });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
+    navLinks.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
         hamburger.classList.remove('open');
         navLinks.classList.remove('open');
       });
     });
 
     /* --- Scroll reveal --- */
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
+    var revealEls = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
           observer.unobserve(e.target);
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
+    revealEls.forEach(function (el) { observer.observe(el); });
 
     /* --- Particle Canvas --- */
-    const canvas = document.getElementById('particles-canvas');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles, mouse = { x: null, y: null };
+    var canvas = document.getElementById('particles-canvas');
+    var ctx = canvas.getContext('2d');
+    var w, h, particles;
+    var mouse = { x: null, y: null };
 
     function resize() {
-      const hero = canvas.parentElement;
+      var hero = canvas.parentElement;
       w = canvas.width = hero.offsetWidth;
       h = canvas.height = hero.offsetHeight;
     }
     window.addEventListener('resize', resize);
     resize();
 
-    canvas.addEventListener('mousemove', e => {
-      const rect = canvas.getBoundingClientRect();
+    canvas.addEventListener('mousemove', function (e) {
+      var rect = canvas.getBoundingClientRect();
       mouse.x = e.clientX - rect.left;
       mouse.y = e.clientY - rect.top;
     });
-    canvas.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+    canvas.addEventListener('mouseleave', function () {
+      mouse.x = null;
+      mouse.y = null;
+    });
 
-    class Particle {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.r = Math.random() * 1.8 + 0.8;
-        this.opacity = Math.random() * 0.5 + 0.2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > w) this.vx *= -1;
-        if (this.y < 0 || this.y > h) this.vy *= -1;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 198, 255, ${this.opacity})`;
-        ctx.fill();
-      }
+    function Particle() {
+      this.reset();
     }
+    Particle.prototype.reset = function () {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.r = Math.random() * 1.8 + 0.8;
+      this.opacity = Math.random() * 0.5 + 0.2;
+    };
+    Particle.prototype.update = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > w) this.vx *= -1;
+      if (this.y < 0 || this.y > h) this.vy *= -1;
+    };
+    Particle.prototype.draw = function () {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0, 198, 255, ' + this.opacity + ')';
+      ctx.fill();
+    };
 
     function initParticles() {
-      const count = Math.min(Math.floor((w * h) / 9000), 120);
-      particles = Array.from({ length: count }, () => new Particle());
+      var count = Math.min(Math.floor((w * h) / 9000), 120);
+      particles = [];
+      for (var i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
     }
     initParticles();
     window.addEventListener('resize', initParticles);
 
     function drawLines() {
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 140) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(0, 198, 255, ${0.12 * (1 - dist / 140)})`;
+            ctx.strokeStyle = 'rgba(0, 198, 255, ' + (0.12 * (1 - dist / 140)) + ')';
             ctx.lineWidth = 0.6;
             ctx.stroke();
           }
         }
-        // mouse interaction
-        if (mouse.x !== null) {
-          const dx = particles[i].x - mouse.x;
-          const dy = particles[i].y - mouse.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 160) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(127, 90, 240, ${0.25 * (1 - dist / 160)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach(p => { p.update(); p.draw(); });
-      drawLines();
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-  })();
-  </script>
-</body>
-</html>
+        // mouse 
