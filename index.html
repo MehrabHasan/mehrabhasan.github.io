@@ -356,4 +356,132 @@
         div.className = "pub-card reveal visible";
         div.innerHTML = `
           <span class="pub-number">${String(PAPERS.length - idx).padStart(2,'0')}</span>
-          
+          <div class="pub-info">
+            <h3>${p.title}</h3>
+            <p class="pub-authors">${p.authors}</p>
+            <div class="pub-meta">
+              ${p.journal ? `<span class="pub-journal">${p.journal}</span>` : ""}
+              <span class="pub-year">${p.year}</span>
+              <span class="pub-citation-badge" id="badge-${idx}">
+                <i class="fa-solid fa-spinner fa-spin"></i> Fetching...
+              </span>
+              ${p.url ? `<a href="${p.url}" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>` : ""}
+            </div>
+          </div>
+        `;
+        list.appendChild(div);
+      });
+    }
+
+    // 3. FETCH CITATIONS FROM SEMANTIC SCHOLAR
+    async function fetchS2Citations() {
+      for (let i = 0; i < PAPERS.length; i++) {
+        let p = PAPERS[i];
+        try {
+          if (p.doi) {
+            // Fetch directly by DOI (100% accurate)
+            let res = await fetch(`https://api.semanticscholar.org/graph/v1/paper/DOI:${p.doi}?fields=citationCount`);
+            if (res.ok) {
+              let data = await res.json();
+              p.citations = data.citationCount || 0;
+            }
+          } else {
+            // Fetch by Exact Title match
+            let query = encodeURIComponent(p.title);
+            let res = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?query=${query}&limit=3&fields=title,citationCount`);
+            if (res.ok) {
+              let data = await res.json();
+              if (data.data && data.data.length > 0) {
+                // Strict match to prevent wrong paper bugs
+                let target = p.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+                let match = data.data.find(d => (d.title||'').toLowerCase().replace(/[^a-z0-9]/g, '').includes(target));
+                if (match) p.citations = match.citationCount || 0;
+              }
+            }
+          }
+        } catch (e) { console.warn("Fetch failed for", p.title); }
+        
+        // Wait 300ms to avoid rate limiting
+        await new Promise(r => setTimeout(r, 300));
+      }
+    }
+
+    // 4. CALCULATE METRICS & UPDATE UI
+    function updateDashboard() {
+      let total = 0;
+      let yearly = { 2022:0, 2023:0, 2024:0, 2025:0, 2026:0 };
+      let hArr = [];
+
+      PAPERS.forEach(p => {
+        total += p.citations;
+        hArr.push(p.citations);
+        if (p.year >= 2022 && p.year <= 2026) yearly[p.year] += p.citations;
+      });
+
+      // Calculate H-Index
+      hArr.sort((a,b) => b - a);
+      let hIndex = 0;
+      for (let i = 0; i < hArr.length; i++) {
+        if (hArr[i] >= i + 1) hIndex = i + 1;
+        else break;
+      }
+
+      // Update Text Numbers
+      document.getElementById("totalCitations").innerText = total;
+      document.getElementById("hIndex").innerText = hIndex;
+
+      // Update Paper Badges
+      const sorted = [...PAPERS].sort((a,b) => b.year - a.year);
+      sorted.forEach((p, idx) => {
+        let badge = document.getElementById(`badge-${idx}`);
+        if(badge) {
+          badge.innerHTML = `<i class="fa-solid fa-quote-left"></i> ${p.citations} Citations`;
+        }
+      });
+
+      // Draw Chart
+      let years = Object.keys(yearly).sort();
+      let cumData = [];
+      let running = 0;
+      years.forEach(y => {
+        running += yearly[y];
+        cumData.push(running);
+      });
+
+      let ctx = document.getElementById("citationChart").getContext("2d");
+      if (chartInstance) chartInstance.destroy();
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: years,
+          datasets: [{
+            label: 'Cumulative Citations',
+            data: cumData,
+            borderColor: '#00c6ff',
+            backgroundColor: 'rgba(0,198,255,0.1)',
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { ticks: { color: "#8892b0" } },
+            y: { beginAtZero: true, ticks: { color: "#8892b0", stepSize: 1 } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    // Initialize System
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('loader').classList.add('hidden');
+      renderPapersToDOM();     // Shows UI instantly
+      await fetchS2Citations(); // Fetches quietly in background
+      updateDashboard();       // Updates all numbers/charts smoothly
+    });
+
+  </script>
+</body>
+</html>
