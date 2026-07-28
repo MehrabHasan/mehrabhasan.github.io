@@ -435,13 +435,11 @@
     }
 
     @keyframes scrollDown {
-
       0%,
       100% {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
       }
-
       60% {
         opacity: 0;
         transform: translateX(-50%) translateY(12px);
@@ -851,7 +849,7 @@
       color: var(--accent);
     }
 
-    /* ===== CITATION BADGE ON PAPERS ===== */
+    /* ===== CITATION BADGE ===== */
     .pub-citation-badge {
       display: inline-flex;
       align-items: center;
@@ -869,7 +867,7 @@
       font-size: 0.65rem;
     }
 
-    /* ===== CITATION METRICS DASHBOARD ===== */
+    /* ===== CITATION DASHBOARD ===== */
     .citation-dashboard {
       max-width: 820px;
       margin: 0 auto 48px;
@@ -1452,7 +1450,6 @@
         opacity: 0;
         transform: translateY(30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
@@ -1471,37 +1468,10 @@
       transform: translateY(0);
     }
 
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: 0.3s;
-    }
-
-    .reveal-delay-4 {
-      transition-delay: 0.4s;
-    }
-
-    @keyframes countUp {
-      from {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .count-animate {
-      animation: countUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ===== RESPONSIVE — TABLET ===== */
     @media (max-width: 900px) {
@@ -1527,9 +1497,7 @@
         height: 60px;
       }
 
-      .scroll-progress {
-        top: 60px;
-      }
+      .scroll-progress { top: 60px; }
 
       .nav-links {
         position: fixed;
@@ -1546,544 +1514,142 @@
         border-left: 1px solid var(--border);
       }
 
-      .nav-links.open {
-        right: 0;
-      }
-
-      .nav-links a {
-        font-size: 1.1rem;
-        padding: 12px 16px;
-      }
-
-      .hamburger {
-        display: flex;
-      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 1.1rem; padding: 12px 16px; }
+      .hamburger { display: flex; }
 
       .hero {
         padding: 90px 16px 50px;
         min-height: 100svh;
       }
 
-      .hero-greeting {
-        font-size: 0.8rem;
-        letter-spacing: 2px;
-        margin-bottom: 12px;
-      }
-
-      .hero-name {
-        font-size: 2.2rem;
-        margin-bottom: 14px;
-      }
-
-      .hero-title {
-        font-size: 0.95rem;
-        margin-bottom: 24px;
-        line-height: 1.7;
-      }
-
-      .hero-tags {
-        gap: 8px;
-        margin-bottom: 28px;
-      }
-
-      .hero-tag {
-        padding: 6px 14px;
-        font-size: 0.72rem;
-      }
-
-      .hero-btns {
-        gap: 12px;
-      }
-
-      .btn {
-        padding: 12px 24px;
-        font-size: 0.85rem;
-      }
-
-      .scroll-indicator {
-        bottom: 20px;
-      }
-
-      .scroll-indicator .mouse {
-        width: 20px;
-        height: 32px;
-      }
-
-      section {
-        padding: 60px 16px;
-      }
-
-      .section-header {
-        margin-bottom: 40px;
-      }
-
-      .section-label {
-        font-size: 0.72rem;
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-      }
-
-      .section-title {
-        font-size: 1.6rem;
-        margin-bottom: 12px;
-      }
-
-      .section-line {
-        width: 40px;
-        height: 2px;
-      }
-
-      .about-photo-wrapper {
-        max-width: 180px;
-      }
-
-      .about-photo-wrapper::after {
-        inset: 8px -8px -8px 8px;
-      }
-
-      .about-text p {
-        font-size: 0.92rem;
-        margin-bottom: 18px;
-        line-height: 1.75;
-      }
-
-      .edu-cards {
-        margin-top: 28px;
-      }
-
-      .edu-cards h3 {
-        font-size: 1.05rem;
-        margin-bottom: 14px;
-      }
-
-      .edu-card {
-        padding: 16px 18px;
-      }
-
-      .edu-card .degree {
-        font-size: 0.88rem;
-      }
-
-      .edu-card .school {
-        font-size: 0.82rem;
-      }
-
-      .edu-card .year {
-        font-size: 0.75rem;
-      }
-
-      .skills-wrap {
-        margin-top: 28px;
-      }
-
-      .skills-wrap h3 {
-        font-size: 1.05rem;
-        margin-bottom: 14px;
-      }
-
-      .skill-tags {
-        gap: 8px;
-      }
-
-      .skill-tag {
-        padding: 6px 12px;
-        font-size: 0.72rem;
-      }
-
-      .research-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-
-      .research-card {
-        padding: 24px 20px;
-      }
-
-      .research-icon {
-        width: 42px;
-        height: 42px;
-        font-size: 1.1rem;
-        margin-bottom: 14px;
-        border-radius: 10px;
-      }
-
-      .research-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 8px;
-      }
-
-      .research-card p {
-        font-size: 0.82rem;
-        line-height: 1.6;
-      }
-
-      .pub-card {
-        flex-direction: column;
-        gap: 12px;
-        padding: 20px 18px;
-      }
-
-      .pub-number {
-        font-size: 1.5rem;
-      }
-
-      .pub-info h3 {
-        font-size: 0.92rem;
-        line-height: 1.45;
-      }
-
-      .pub-info .pub-authors {
-        font-size: 0.8rem;
-      }
-
-      .pub-meta {
-        gap: 8px;
-      }
-
-      .pub-journal {
-        font-size: 0.75rem;
-      }
-
-      .pub-year {
-        font-size: 0.72rem;
-        padding: 2px 10px;
-      }
-
-      .pub-link {
-        font-size: 0.75rem;
-      }
-
-      .pub-scholar-btn {
-        padding: 10px 22px;
-        font-size: 0.82rem;
-        margin-top: 24px;
-      }
-
-      .timeline::before {
-        left: 14px;
-      }
-
-      .timeline-item {
-        padding-left: 44px;
-        padding-bottom: 36px;
-      }
-
-      .timeline-dot {
-        left: 6px;
-        top: 4px;
-        width: 16px;
-        height: 16px;
-      }
-
-      .timeline-header {
-        gap: 8px;
-        margin-bottom: 6px;
-      }
-
-      .timeline-role {
-        font-size: 1rem;
-      }
-
-      .timeline-period {
-        font-size: 0.72rem;
-        padding: 3px 10px;
-      }
-
-      .timeline-org {
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-      }
-
-      .timeline-details li {
-        font-size: 0.82rem;
-        margin-bottom: 6px;
-        padding-left: 16px;
-        line-height: 1.55;
-      }
-
-      .activities-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 500px;
-      }
-
-      .activity-body {
-        padding: 18px 18px 22px;
-      }
-
-      .activity-body h3 {
-        font-size: 1rem;
-      }
-
-      .activity-body p {
-        font-size: 0.85rem;
-      }
-
-      .activity-badge {
-        top: 10px;
-        left: 10px;
-        padding: 4px 10px;
-        font-size: 0.68rem;
-      }
-
-      .contact-wrapper>p {
-        font-size: 0.92rem;
-        margin-bottom: 28px;
-      }
-
-      .contact-email {
-        font-size: 1rem;
-        margin-bottom: 28px;
-      }
-
-      .contact-email i {
-        font-size: 0.9rem;
-      }
-
-      .social-links {
-        gap: 12px;
-      }
-
-      .social-link {
-        width: 46px;
-        height: 46px;
-        border-radius: 12px;
-        font-size: 1.05rem;
-      }
-
-      footer {
-        padding: 28px 16px;
-        font-size: 0.75rem;
-      }
-
-      /* Citation dashboard mobile */
-      .citation-stats-row {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-      }
-
-      .citation-stat-card {
-        padding: 20px 16px;
-      }
-
-      .citation-stat-number {
-        font-size: 1.8rem;
-      }
-
-      .citation-stat-label {
-        font-size: 0.72rem;
-      }
-
-      .citation-chart-wrapper {
-        padding: 20px 16px;
-      }
-
-      .citation-chart-header {
-        flex-direction: column;
-        gap: 8px;
-        align-items: flex-start;
-      }
+      .hero-greeting { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 12px; }
+      .hero-name { font-size: 2.2rem; margin-bottom: 14px; }
+      .hero-title { font-size: 0.95rem; margin-bottom: 24px; line-height: 1.7; }
+      .hero-tags { gap: 8px; margin-bottom: 28px; }
+      .hero-tag { padding: 6px 14px; font-size: 0.72rem; }
+      .hero-btns { gap: 12px; }
+      .btn { padding: 12px 24px; font-size: 0.85rem; }
+
+      .scroll-indicator { bottom: 20px; }
+      .scroll-indicator .mouse { width: 20px; height: 32px; }
+
+      section { padding: 60px 16px; }
+      .section-header { margin-bottom: 40px; }
+      .section-label { font-size: 0.72rem; letter-spacing: 2px; margin-bottom: 8px; }
+      .section-title { font-size: 1.6rem; margin-bottom: 12px; }
+      .section-line { width: 40px; height: 2px; }
+
+      .about-photo-wrapper { max-width: 180px; }
+      .about-photo-wrapper::after { inset: 8px -8px -8px 8px; }
+      .about-text p { font-size: 0.92rem; margin-bottom: 18px; line-height: 1.75; }
+
+      .edu-cards { margin-top: 28px; }
+      .edu-cards h3 { font-size: 1.05rem; margin-bottom: 14px; }
+      .edu-card { padding: 16px 18px; }
+      .edu-card .degree { font-size: 0.88rem; }
+      .edu-card .school { font-size: 0.82rem; }
+      .edu-card .year { font-size: 0.75rem; }
+
+      .skills-wrap { margin-top: 28px; }
+      .skills-wrap h3 { font-size: 1.05rem; margin-bottom: 14px; }
+      .skill-tags { gap: 8px; }
+      .skill-tag { padding: 6px 12px; font-size: 0.72rem; }
+
+      .research-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .research-card { padding: 24px 20px; }
+      .research-icon { width: 42px; height: 42px; font-size: 1.1rem; margin-bottom: 14px; border-radius: 10px; }
+      .research-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
+      .research-card p { font-size: 0.82rem; line-height: 1.6; }
+
+      .pub-card { flex-direction: column; gap: 12px; padding: 20px 18px; }
+      .pub-number { font-size: 1.5rem; }
+      .pub-info h3 { font-size: 0.92rem; line-height: 1.45; }
+      .pub-info .pub-authors { font-size: 0.8rem; }
+      .pub-meta { gap: 8px; }
+      .pub-journal { font-size: 0.75rem; }
+      .pub-year { font-size: 0.72rem; padding: 2px 10px; }
+      .pub-link { font-size: 0.75rem; }
+      .pub-scholar-btn { padding: 10px 22px; font-size: 0.82rem; margin-top: 24px; }
+
+      .timeline::before { left: 14px; }
+      .timeline-item { padding-left: 44px; padding-bottom: 36px; }
+      .timeline-dot { left: 6px; top: 4px; width: 16px; height: 16px; }
+      .timeline-header { gap: 8px; margin-bottom: 6px; }
+      .timeline-role { font-size: 1rem; }
+      .timeline-period { font-size: 0.72rem; padding: 3px 10px; }
+      .timeline-org { font-size: 0.85rem; margin-bottom: 10px; }
+      .timeline-details li { font-size: 0.82rem; margin-bottom: 6px; padding-left: 16px; line-height: 1.55; }
+
+      .activities-grid { grid-template-columns: 1fr; gap: 20px; max-width: 500px; }
+      .activity-body { padding: 18px 18px 22px; }
+      .activity-body h3 { font-size: 1rem; }
+      .activity-body p { font-size: 0.85rem; }
+      .activity-badge { top: 10px; left: 10px; padding: 4px 10px; font-size: 0.68rem; }
+
+      .contact-wrapper>p { font-size: 0.92rem; margin-bottom: 28px; }
+      .contact-email { font-size: 1rem; margin-bottom: 28px; }
+      .contact-email i { font-size: 0.9rem; }
+      .social-links { gap: 12px; }
+      .social-link { width: 46px; height: 46px; border-radius: 12px; font-size: 1.05rem; }
+      footer { padding: 28px 16px; font-size: 0.75rem; }
+
+      .citation-stats-row { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .citation-stat-card { padding: 20px 16px; }
+      .citation-stat-number { font-size: 1.8rem; }
+      .citation-stat-label { font-size: 0.72rem; }
+      .citation-chart-wrapper { padding: 20px 16px; }
+      .citation-chart-header { flex-direction: column; gap: 8px; align-items: flex-start; }
     }
 
     /* ===== RESPONSIVE — SMALL MOBILE ===== */
     @media (max-width: 480px) {
-      .hero {
-        padding: 80px 14px 40px;
-      }
-
-      .hero-greeting {
-        font-size: 0.72rem;
-      }
-
-      .hero-name {
-        font-size: 1.8rem;
-      }
-
-      .hero-title {
-        font-size: 0.88rem;
-      }
-
-      .hero-tags {
-        gap: 6px;
-        margin-bottom: 24px;
-      }
-
-      .hero-tag {
-        padding: 5px 12px;
-        font-size: 0.68rem;
-      }
-
-      .hero-btns {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center;
-        padding: 12px 20px;
-        font-size: 0.82rem;
-      }
-
-      section {
-        padding: 48px 14px;
-      }
-
-      .section-title {
-        font-size: 1.4rem;
-      }
-
-      .about-photo-wrapper {
-        max-width: 150px;
-      }
-
-      .about-text p {
-        font-size: 0.85rem;
-      }
-
-      .research-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .research-card {
-        padding: 20px 18px;
-      }
-
-      .research-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 1rem;
-        margin-bottom: 12px;
-      }
-
-      .research-card h3 {
-        font-size: 0.9rem;
-      }
-
-      .research-card p {
-        font-size: 0.8rem;
-      }
-
-      .pub-card {
-        padding: 18px 16px;
-      }
-
-      .pub-number {
-        font-size: 1.3rem;
-        min-width: 30px;
-      }
-
-      .pub-info h3 {
-        font-size: 0.85rem;
-      }
-
-      .timeline-item {
-        padding-left: 38px;
-        padding-bottom: 28px;
-      }
-
-      .timeline-dot {
-        left: 4px;
-        width: 14px;
-        height: 14px;
-        border-width: 2px;
-      }
-
-      .timeline::before {
-        left: 10px;
-      }
-
-      .timeline-role {
-        font-size: 0.92rem;
-      }
-
-      .timeline-period {
-        font-size: 0.68rem;
-      }
-
-      .timeline-org {
-        font-size: 0.8rem;
-      }
-
-      .timeline-details li {
-        font-size: 0.78rem;
-        padding-left: 14px;
-      }
-
-      .activities-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-email {
-        font-size: 0.9rem;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .social-link {
-        width: 42px;
-        height: 42px;
-        font-size: 0.95rem;
-      }
-
-      /* Citation dashboard small mobile */
-      .citation-stats-row {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .citation-stat-card {
-        padding: 18px 14px;
-      }
-
-      .citation-stat-number {
-        font-size: 1.6rem;
-      }
+      .hero { padding: 80px 14px 40px; }
+      .hero-greeting { font-size: 0.72rem; }
+      .hero-name { font-size: 1.8rem; }
+      .hero-title { font-size: 0.88rem; }
+      .hero-tags { gap: 6px; margin-bottom: 24px; }
+      .hero-tag { padding: 5px 12px; font-size: 0.68rem; }
+      .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn { width: 100%; justify-content: center; padding: 12px 20px; font-size: 0.82rem; }
+      section { padding: 48px 14px; }
+      .section-title { font-size: 1.4rem; }
+      .about-photo-wrapper { max-width: 150px; }
+      .about-text p { font-size: 0.85rem; }
+      .research-grid { grid-template-columns: 1fr; gap: 14px; }
+      .research-card { padding: 20px 18px; }
+      .research-icon { width: 38px; height: 38px; font-size: 1rem; margin-bottom: 12px; }
+      .research-card h3 { font-size: 0.9rem; }
+      .research-card p { font-size: 0.8rem; }
+      .pub-card { padding: 18px 16px; }
+      .pub-number { font-size: 1.3rem; min-width: 30px; }
+      .pub-info h3 { font-size: 0.85rem; }
+      .timeline-item { padding-left: 38px; padding-bottom: 28px; }
+      .timeline-dot { left: 4px; width: 14px; height: 14px; border-width: 2px; }
+      .timeline::before { left: 10px; }
+      .timeline-role { font-size: 0.92rem; }
+      .timeline-period { font-size: 0.68rem; }
+      .timeline-org { font-size: 0.8rem; }
+      .timeline-details li { font-size: 0.78rem; padding-left: 14px; }
+      .activities-grid { grid-template-columns: 1fr; }
+      .contact-email { font-size: 0.9rem; flex-direction: column; gap: 6px; }
+      .social-link { width: 42px; height: 42px; font-size: 0.95rem; }
+      .citation-stats-row { grid-template-columns: 1fr; gap: 10px; }
+      .citation-stat-card { padding: 18px 14px; }
+      .citation-stat-number { font-size: 1.6rem; }
     }
 
     /* ===== RESPONSIVE — VERY SMALL ===== */
     @media (max-width: 360px) {
-      .hero-name {
-        font-size: 1.5rem;
-      }
-
-      .hero-title {
-        font-size: 0.82rem;
-      }
-
-      .hero-tag {
-        padding: 4px 10px;
-        font-size: 0.65rem;
-      }
-
-      .btn {
-        padding: 10px 18px;
-        font-size: 0.78rem;
-      }
-
-      section {
-        padding: 40px 12px;
-      }
-
-      .section-title {
-        font-size: 1.25rem;
-      }
-
-      .about-photo-wrapper {
-        max-width: 130px;
-      }
-
-      .nav-links {
-        width: 240px;
-        padding: 30px;
-      }
-
-      .nav-links a {
-        font-size: 1rem;
-        padding: 10px 14px;
-      }
+      .hero-name { font-size: 1.5rem; }
+      .hero-title { font-size: 0.82rem; }
+      .hero-tag { padding: 4px 10px; font-size: 0.65rem; }
+      .btn { padding: 10px 18px; font-size: 0.78rem; }
+      section { padding: 40px 12px; }
+      .section-title { font-size: 1.25rem; }
+      .about-photo-wrapper { max-width: 130px; }
+      .nav-links { width: 240px; padding: 30px; }
+      .nav-links a { font-size: 1rem; padding: 10px 14px; }
     }
   </style>
 </head>
@@ -2293,20 +1859,17 @@
         <div class="section-line"></div>
       </div>
 
-      <!-- Citation Metrics Dashboard -->
+      <!-- Citation Dashboard -->
       <div class="citation-dashboard reveal">
-
-        <!-- Stats Row -->
         <div class="citation-stats-row">
+
           <!-- Total Citations -->
           <div class="citation-stat-card">
             <div class="citation-stat-icon">
               <i class="fa-solid fa-quote-left"></i>
             </div>
             <div class="citation-stat-number" id="totalCitations">
-              <div class="citation-loading">
-                <div class="spinner"></div>
-              </div>
+              <div class="citation-loading"><div class="spinner"></div></div>
             </div>
             <div class="citation-stat-label">Total Citations</div>
             <div class="citation-stat-sub" id="citationSource">via Semantic Scholar</div>
@@ -2318,9 +1881,7 @@
               <i class="fa-solid fa-h"></i>
             </div>
             <div class="citation-stat-number" id="hIndex">
-              <div class="citation-loading">
-                <div class="spinner"></div>
-              </div>
+              <div class="citation-loading"><div class="spinner"></div></div>
             </div>
             <div class="citation-stat-label">H-Index</div>
             <div class="citation-stat-sub">calculated live</div>
@@ -2332,9 +1893,7 @@
               <i class="fa-solid fa-file-lines"></i>
             </div>
             <div class="citation-stat-number" id="totalPapers">
-              <div class="citation-loading">
-                <div class="spinner"></div>
-              </div>
+              <div class="citation-loading"><div class="spinner"></div></div>
             </div>
             <div class="citation-stat-label">Publications</div>
             <div class="citation-stat-sub">auto-updated</div>
@@ -2358,15 +1917,15 @@
         </div>
       </div>
 
-      <!-- Dynamic Publication List -->
+      <!-- Publication List -->
       <div class="pub-list" id="pubList">
         <div class="citation-loading" id="pubLoading" style="padding:40px">
           <div class="spinner"></div>
-          <span>Loading publications...</span>
+          <span>Loading publications from Semantic Scholar...</span>
         </div>
       </div>
 
-      <!-- Google Scholar Button -->
+      <!-- Google Scholar Link -->
       <div style="text-align:center" class="reveal">
         <a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en" target="_blank"
           class="pub-scholar-btn">
@@ -2387,52 +1946,41 @@
       </div>
 
       <div class="timeline">
-        <!-- Experience 1 -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <span class="timeline-role">Graduate Research Assistant</span>
             <span class="timeline-period">2024 – Present</span>
           </div>
-          <p class="timeline-org">
-            University of Oklahoma — School of Aerospace &amp; Mechanical Engineering
-          </p>
+          <p class="timeline-org">University of Oklahoma — School of Aerospace &amp; Mechanical Engineering</p>
           <ul class="timeline-details">
             <li>Developed ML-assisted shape recovery prediction models for shape memory epoxy composites</li>
-            <li>Designed experimental setups for Li-ion pouch cell disassembly and coin cell fabrication in glovebox
-              environment</li>
+            <li>Designed experimental setups for Li-ion pouch cell disassembly and coin cell fabrication in glovebox environment</li>
             <li>Developed physics-based degradation models for graphite–silicon composite electrodes</li>
-            <li>Implemented model predictive control for Li-metal batteries with voltage, temperature, and electrolyte
-              constraints</li>
+            <li>Implemented model predictive control for Li-metal batteries with voltage, temperature, and electrolyte constraints</li>
           </ul>
         </div>
 
-        <!-- Experience 2 -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <span class="timeline-role">Graduate Teaching Assistant</span>
             <span class="timeline-period">2025 – Present</span>
           </div>
-          <p class="timeline-org">
-            University of Oklahoma — School of Aerospace &amp; Mechanical Engineering
-          </p>
+          <p class="timeline-org">University of Oklahoma — School of Aerospace &amp; Mechanical Engineering</p>
           <ul class="timeline-details">
             <li>Taught Aerodynamics, Solid Mechanics, SolidWorks &amp; ANSYS lab sessions</li>
             <li>Mentored and supported 200+ undergraduate students across multiple courses</li>
           </ul>
         </div>
 
-        <!-- Experience 3 -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <span class="timeline-role">Graduate Research Assistant</span>
             <span class="timeline-period">2023 – 2024</span>
           </div>
-          <p class="timeline-org">
-            University of North Texas — Department of Material Science and Engineering
-          </p>
+          <p class="timeline-org">University of North Texas — Department of Material Science and Engineering</p>
           <ul class="timeline-details">
             <li>Developed Iron–CO₂ batteries with 2D TMD catalysts achieving ~900% capacity improvement</li>
             <li>Performed EIS, CV, and long-cycle testing for electrochemical performance evaluation</li>
@@ -2442,21 +1990,16 @@
           </ul>
         </div>
 
-        <!-- Experience 4 -->
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
           <div class="timeline-header">
             <span class="timeline-role">Graduate Teaching Assistant</span>
             <span class="timeline-period">2022 – 2023</span>
           </div>
-          <p class="timeline-org">
-            University of North Texas — Department of Mechanical and Energy Engineering
-          </p>
+          <p class="timeline-org">University of North Texas — Department of Mechanical and Energy Engineering</p>
           <ul class="timeline-details">
-            <li>Mentored five Senior Design groups (25 students) for the final project planning, design and fabrication
-              of prototype</li>
-            <li>Mentored 65 students for the Thermodynamics course (undergraduate level), proctored and evaluated
-              assignments and exams</li>
+            <li>Mentored five Senior Design groups (25 students) for the final project planning, design and fabrication of prototype</li>
+            <li>Mentored 65 students for the Thermodynamics course (undergraduate level), proctored and evaluated assignments and exams</li>
           </ul>
         </div>
       </div>
@@ -2474,7 +2017,6 @@
       </div>
 
       <div class="activities-grid">
-        <!-- Activity Card 1 — AIAA/ASME Symposium -->
         <a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_aiaa-asme-ocu-activity-7448791548713943040-Njpw"
           target="_blank" rel="noopener noreferrer" class="activity-card reveal">
           <div class="activity-img-wrapper">
@@ -2489,19 +2031,13 @@
           </div>
           <div class="activity-body">
             <h3>44th Annual Oklahoma AIAA/ASME Symposium 2026</h3>
-            <p>
-              Presented research on "Development and Application of Machine
-              Learning Framework for Predicting Shape Recovery of Carbon
-              Fiber Reinforced Shape Memory Epoxy Composites under Joule
-              Heating."
-            </p>
+            <p>Presented research on "Development and Application of Machine Learning Framework for Predicting Shape Recovery of Carbon Fiber Reinforced Shape Memory Epoxy Composites under Joule Heating."</p>
             <span class="activity-read-more">
               View Post <i class="fa-solid fa-arrow-right"></i>
             </span>
           </div>
         </a>
 
-        <!-- Activity Card 2 — Graduate College Research Showcase -->
         <a href="https://www.linkedin.com/feed/update/urn:li:activity:7432961166097956865/" target="_blank"
           rel="noopener noreferrer" class="activity-card reveal">
           <div class="activity-img-wrapper">
@@ -2516,29 +2052,20 @@
           </div>
           <div class="activity-body">
             <h3>Graduate College Research Showcase</h3>
-            <p>
-              Presented current research on the "Graduate College Research
-              Showcase" at the University of Oklahoma.
-            </p>
+            <p>Presented current research on the "Graduate College Research Showcase" at the University of Oklahoma.</p>
             <span class="activity-read-more">
               View Post <i class="fa-solid fa-arrow-right"></i>
             </span>
           </div>
         </a>
 
-        <!-- Activity Card 3 — Mathnasium Scholarship -->
         <div class="activity-card reveal">
           <div class="activity-img-wrapper">
             <img src="assets/Mathnasium Scholarship Cover.png" alt="Mathnasium Scholarship" class="activity-img" />
           </div>
           <div class="activity-body">
             <h3>Mathnasium Scholarship</h3>
-            <p>
-              I have been awarded the Mathnasium Engineering Scholarship for
-              the 2026-2027 academic session. This recognition is a
-              reflection of my academic accomplishments and my continued
-              dedication to the University of Oklahoma community.
-            </p>
+            <p>I have been awarded the Mathnasium Engineering Scholarship for the 2026-2027 academic session. This recognition is a reflection of my academic accomplishments and my continued dedication to the University of Oklahoma community.</p>
           </div>
         </div>
       </div>
@@ -2558,26 +2085,23 @@
       <div class="contact-wrapper reveal">
         <p>
           I'm always interested in discussing research collaborations,
-          opportunities, or just connecting with fellow researchers. Feel
-          free to reach out!
+          opportunities, or just connecting with fellow researchers.
+          Feel free to reach out!
         </p>
         <a href="mailto:mehrab.hasan3513@gmail.com" class="contact-email">
           <i class="fa-solid fa-envelope"></i> mehrab.hasan3513@gmail.com
         </a>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/mehrab-hasan-974471129/" target="_blank" class="social-link"
-            title="LinkedIn">
+          <a href="https://www.linkedin.com/in/mehrab-hasan-974471129/" target="_blank" class="social-link" title="LinkedIn">
             <i class="fa-brands fa-linkedin-in"></i>
           </a>
           <a href="https://github.com/mehrabhasan" target="_blank" class="social-link" title="GitHub">
             <i class="fa-brands fa-github"></i>
           </a>
-          <a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en" target="_blank" class="social-link"
-            title="Google Scholar">
+          <a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en" target="_blank" class="social-link" title="Google Scholar">
             <i class="fa-brands fa-google-scholar"></i>
           </a>
-          <a href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" class="social-link"
-            title="ResearchGate">
+          <a href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" class="social-link" title="ResearchGate">
             <i class="fa-brands fa-researchgate"></i>
           </a>
         </div>
@@ -2595,20 +2119,17 @@
   <!-- ===== JAVASCRIPT ===== -->
   <script>
     // ============================================================
-    // PART 1: CORE WEBSITE FUNCTIONALITY
-    // (Loader, Nav, Scroll, Particles)
+    // PART 1: CORE SITE (Loader, Nav, Scroll, Particles)
     // ============================================================
     (function () {
       'use strict';
 
-      // --- Loader ---
       window.addEventListener('load', function () {
         setTimeout(function () {
           document.getElementById('loader').classList.add('hidden');
         }, 400);
       });
 
-      // --- Navbar scroll ---
       var navbar = document.getElementById('navbar');
       var progressBar = document.getElementById('scrollProgress');
       var sections = document.querySelectorAll('section[id]');
@@ -2616,46 +2137,30 @@
 
       function onScroll() {
         var scrollY = window.scrollY;
-
-        if (scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
+        if (scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
 
         var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        if (docHeight > 0) {
-          progressBar.style.width = (scrollY / docHeight * 100) + '%';
-        }
+        if (docHeight > 0) progressBar.style.width = (scrollY / docHeight * 100) + '%';
 
         var current = '';
         sections.forEach(function (sec) {
-          if (scrollY >= sec.offsetTop - 200) {
-            current = sec.id;
-          }
+          if (scrollY >= sec.offsetTop - 200) current = sec.id;
         });
-
         navLinksAll.forEach(function (a) {
-          if (a.getAttribute('href') === '#' + current) {
-            a.classList.add('active');
-          } else {
-            a.classList.remove('active');
-          }
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
         });
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
 
-      // --- Mobile menu ---
       var hamburger = document.getElementById('hamburger');
       var navLinks = document.getElementById('navLinks');
-
       hamburger.addEventListener('click', function () {
         hamburger.classList.toggle('open');
         navLinks.classList.toggle('open');
       });
-
       navLinks.querySelectorAll('a').forEach(function (a) {
         a.addEventListener('click', function () {
           hamburger.classList.remove('open');
@@ -2663,7 +2168,6 @@
         });
       });
 
-      // --- Scroll reveal ---
       var revealEls = document.querySelectorAll('.reveal');
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -2673,12 +2177,9 @@
           }
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { observer.observe(el); });
 
-      revealEls.forEach(function (el) {
-        observer.observe(el);
-      });
-
-      // --- Particle Canvas ---
+      // Particles
       var canvas = document.getElementById('particles-canvas');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
@@ -2690,7 +2191,6 @@
         w = canvas.width = hero.offsetWidth;
         h = canvas.height = hero.offsetHeight;
       }
-
       window.addEventListener('resize', resize);
       resize();
 
@@ -2699,10 +2199,8 @@
         mouse.x = e.clientX - rect.left;
         mouse.y = e.clientY - rect.top;
       });
-
       canvas.addEventListener('mouseleave', function () {
-        mouse.x = null;
-        mouse.y = null;
+        mouse.x = null; mouse.y = null;
       });
 
       function Particle() {
@@ -2713,14 +2211,11 @@
         this.r = Math.random() * 1.8 + 0.8;
         this.opacity = Math.random() * 0.5 + 0.2;
       }
-
       Particle.prototype.update = function () {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > w) this.vx *= -1;
         if (this.y < 0 || this.y > h) this.vy *= -1;
       };
-
       Particle.prototype.draw = function () {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
@@ -2731,25 +2226,17 @@
       function initParticles() {
         var count = Math.min(Math.floor((w * h) / 9000), 120);
         particles = [];
-        for (var i = 0; i < count; i++) {
-          particles.push(new Particle());
-        }
+        for (var i = 0; i < count; i++) particles.push(new Particle());
       }
-
       initParticles();
-
-      window.addEventListener('resize', function () {
-        resize();
-        initParticles();
-      });
+      window.addEventListener('resize', function () { resize(); initParticles(); });
 
       function drawLines() {
-        var i, j, dx, dy, dist;
-        for (i = 0; i < particles.length; i++) {
-          for (j = i + 1; j < particles.length; j++) {
-            dx = particles[i].x - particles[j].x;
-            dy = particles[i].y - particles[j].y;
-            dist = Math.sqrt(dx * dx + dy * dy);
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[i].x - particles[j].x;
+            var dy = particles[i].y - particles[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 140) {
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
@@ -2759,16 +2246,15 @@
               ctx.stroke();
             }
           }
-
-          if (mouse.x !== null && mouse.y !== null) {
-            dx = particles[i].x - mouse.x;
-            dy = particles[i].y - mouse.y;
-            dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 160) {
+          if (mouse.x !== null) {
+            var dx2 = particles[i].x - mouse.x;
+            var dy2 = particles[i].y - mouse.y;
+            var dist2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+            if (dist2 < 160) {
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(mouse.x, mouse.y);
-              ctx.strokeStyle = 'rgba(127, 90, 240, ' + (0.25 * (1 - dist / 160)) + ')';
+              ctx.strokeStyle = 'rgba(127, 90, 240, ' + (0.25 * (1 - dist2 / 160)) + ')';
               ctx.lineWidth = 0.8;
               ctx.stroke();
             }
@@ -2785,468 +2271,253 @@
         drawLines();
         requestAnimationFrame(animate);
       }
-
       animate();
     })();
 
 
     // ============================================================
-    // PART 2: CITATION COUNTER & PUBLICATION AUTO-LOADER
-    // Sources:
-    //   - Semantic Scholar API (free, no key) for citation counts
-    //   - Google Scholar (via free CORS proxy) for paper discovery
+    // PART 2: CITATION SYSTEM
+    // Your exact 7 papers → search each on Semantic Scholar
     // ============================================================
     (function () {
       'use strict';
 
-      // ---- Semantic Scholar Author ID (resolved dynamically) ----
-      var S2_AUTHOR_ID = null;
-
-      // ---- Chart instance reference ----
       var citationChart = null;
 
-      // ---- All papers data storage ----
-      var allPapersData = [];
-
-      // ---- Known papers (always shown as fallback) ----
-      var KNOWN_PAPERS = [
+      // =============================================
+      // YOUR EXACT 7 PAPERS FROM GOOGLE SCHOLAR
+      // =============================================
+      var MY_PAPERS = [
         {
-          title: "Machine Learning Assisted Prediction of Recovered Angle of Carbon Fiber Reinforced Shape Memory Epoxy Composites",
-          authors: "Hasan, M.; Ghamarian, I.; Liu, Y.",
-          journal: "Macromolecular Rapid Communications",
-          year: 2026,
-          url: "https://onlinelibrary.wiley.com/share/author/I4X9IU6U5RYWDQSA5SKT?target=10.1002/marc.202500962"
+          title: "Advanced Nanomaterial-based Biosensors for Clinical Diagnosis, Environmental Protection and Industrial Fermentation",
+          authors: "<strong>M Hasan</strong>, MN Sakib, RB Sabroj, MZ Rahman",
+          journal: "Comprehensive Materials Processing (Second Edition)",
+          year: 2024,
+          url: "https://www.sciencedirect.com/science/chapter/referencework/abs/pii/B9780323960205002740",
+          gsCitations: 6,
+          s2Citations: null
         },
         {
           title: "4D-Printed Liquid Crystal Elastomers: Printing Strategies, Actuation Mechanisms, and Emerging Applications",
-          authors: "Hasan, M.; Liu, Y.",
+          authors: "<strong>M Hasan</strong>, Y Liu",
           journal: "Journal of Composites Science",
           year: 2025,
-          url: "https://www.mdpi.com/2504-477X/9/11/633"
+          url: "https://www.mdpi.com/2504-477X/9/11/633",
+          gsCitations: 3,
+          s2Citations: null
         },
         {
-          title: "Advanced Nanomaterial-based Biosensors for Clinical Diagnosis, Environmental Protection and Industrial Fermentation",
-          authors: "Hasan, M.+; Sakib, N.+; Sabroj, R.; Rahman, Z.",
-          journal: "Comprehensive Materials Processing",
-          year: 2024,
-          url: "https://www.sciencedirect.com/science/chapter/referencework/abs/pii/B9780323960205002740"
+          title: "Numerical Analysis of Steady Laminar Flow by Finite Volume Method in Connection with Simple Algorithm",
+          authors: "R Razib, <strong>M Hasan</strong>, SA Bhuiyan, MS Kader",
+          journal: "Proceedings of the 13th International Conference on Marine Technology (MARTEC)",
+          year: 2023,
+          url: "",
+          gsCitations: 3,
+          s2Citations: null
+        },
+        {
+          title: "Machine Learning Assisted Prediction of Recovered Angle of Carbon Fiber Reinforced Shape Memory Epoxy Composites",
+          authors: "<strong>M Hasan</strong>, I Ghamarian, Y Liu",
+          journal: "Macromolecular Rapid Communications",
+          year: 2026,
+          url: "https://onlinelibrary.wiley.com/share/author/I4X9IU6U5RYWDQSA5SKT?target=10.1002/marc.202500962",
+          gsCitations: 1,
+          s2Citations: null
+        },
+        {
+          title: "Aerodynamic Analysis and Comparison between Axial Fan of Five and Seven Blades",
+          authors: "<strong>M Hasan</strong>",
+          journal: "2023 ASEE Gulf-Southwest Annual Conference",
+          year: 2023,
+          url: "",
+          gsCitations: 0,
+          s2Citations: null
+        },
+        {
+          title: "Machine Learning Assisted Shape Recovery Prediction Model Development for Carbon Fiber-Reinforced Shape Memory Epoxy Composites",
+          authors: "<strong>M Hasan</strong>, I Ghamarian, Y Liu",
+          journal: "",
+          year: 2025,
+          url: "",
+          gsCitations: 0,
+          s2Citations: null
+        },
+        {
+          title: "Numerical Study of Aerodynamic Characteristics of Axial Fans with Different Blade Configurations",
+          authors: "<strong>M Hasan</strong>",
+          journal: "Engineering Archive",
+          year: 2023,
+          url: "",
+          gsCitations: 0,
+          s2Citations: null
         }
       ];
 
 
-      // ========================================
-      // UTILITY: Fetch with timeout
-      // ========================================
-      function fetchWithTimeout(url, timeout) {
-        timeout = timeout || 10000;
-        return Promise.race([
-          fetch(url),
-          new Promise(function (_, reject) {
-            setTimeout(function () {
-              reject(new Error('Timeout'));
-            }, timeout);
-          })
-        ]);
-      }
-
-
-      // ========================================
-      // STEP 1: Find author on Semantic Scholar
-      // ========================================
-      function findAuthorOnS2() {
-        var searchUrl = 'https://api.semanticscholar.org/graph/v1/author/search?query=Mehrab+Hasan&fields=name,paperCount,hIndex';
-
-        return fetchWithTimeout(searchUrl)
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            if (data && data.data && data.data.length > 0) {
-              // Try to find the correct Mehrab Hasan
-              for (var i = 0; i < data.data.length; i++) {
-                var author = data.data[i];
-                if (
-                  author.name &&
-                  author.name.toLowerCase().indexOf('mehrab') !== -1 &&
-                  author.name.toLowerCase().indexOf('hasan') !== -1
-                ) {
-                  S2_AUTHOR_ID = author.authorId;
-                  return author;
-                }
-              }
-              // Fallback: use first result
-              S2_AUTHOR_ID = data.data[0].authorId;
-              return data.data[0];
-            }
-            return null;
-          });
-      }
-
-
-      // ========================================
-      // STEP 2: Get all papers by author from S2
-      // ========================================
-      function getAuthorPapers(authorId) {
-        var url = 'https://api.semanticscholar.org/graph/v1/author/' +
-          authorId +
-          '/papers?fields=title,year,citationCount,externalIds,url,authors,venue,publicationVenue&limit=100';
-
-        return fetchWithTimeout(url)
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            if (data && data.data) {
-              return data.data;
-            }
-            return [];
-          });
-      }
-
-
-      // ========================================
-      // STEP 3: Search individual paper on S2
-      // ========================================
+      // =============================================
+      // Search a paper on Semantic Scholar by title
+      // =============================================
       function searchPaperOnS2(title) {
         var url = 'https://api.semanticscholar.org/graph/v1/paper/search?query=' +
           encodeURIComponent(title) +
-          '&fields=title,year,citationCount,authors,venue,url,externalIds&limit=3';
+          '&fields=title,citationCount,year&limit=5';
 
-        return fetchWithTimeout(url, 8000)
+        return fetch(url)
           .then(function (r) { return r.json(); })
           .then(function (data) {
-            if (data && data.data && data.data.length > 0) {
-              var best = null;
-              var bestScore = 0;
+            if (!data.data || data.data.length === 0) return null;
 
-              for (var i = 0; i < data.data.length; i++) {
-                var paper = data.data[i];
-                var score = titleSimilarity(title, paper.title || '');
-                if (score > bestScore) {
-                  bestScore = score;
-                  best = paper;
-                }
+            // Find best match by word overlap
+            var best = null;
+            var bestScore = 0;
+            var titleWords = title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/).filter(function (w) { return w.length > 2; });
+
+            data.data.forEach(function (paper) {
+              if (!paper.title) return;
+              var paperWords = paper.title.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+              var paperSet = {};
+              paperWords.forEach(function (w) { paperSet[w] = true; });
+
+              var matches = 0;
+              titleWords.forEach(function (w) {
+                if (paperSet[w]) matches++;
+              });
+
+              var score = matches / titleWords.length;
+              if (score > bestScore) {
+                bestScore = score;
+                best = paper;
               }
+            });
 
-              if (bestScore > 0.4) return best;
-            }
+            // Only accept if >50% of words match
+            if (bestScore > 0.5) return best;
             return null;
           })
           .catch(function () { return null; });
       }
 
 
-      // ========================================
-      // UTILITY: Title similarity (word overlap)
-      // ========================================
-      function titleSimilarity(a, b) {
-        var wordsA = a.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
-        var wordsB = b.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
-        var setB = {};
+      // =============================================
+      // Fetch citations for all papers with delays
+      // =============================================
+      async function fetchAllCitations() {
+        for (var i = 0; i < MY_PAPERS.length; i++) {
+          var paper = MY_PAPERS[i];
 
-        wordsB.forEach(function (w) { setB[w] = true; });
-
-        var overlap = 0;
-        wordsA.forEach(function (w) {
-          if (setB[w] && w.length > 2) overlap++;
-        });
-
-        return overlap / Math.max(wordsA.length, 1);
-      }
-
-
-      // ========================================
-      // STEP 4: Fetch Google Scholar papers
-      // (via free CORS proxy — best effort)
-      // ========================================
-      function fetchGoogleScholarPapers() {
-        var gsUrl = 'https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en&oi=ao&cstart=0&pagesize=100';
-        var proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(gsUrl);
-
-        return fetchWithTimeout(proxyUrl, 15000)
-          .then(function (r) { return r.text(); })
-          .then(function (html) {
-            return parseGoogleScholarHTML(html);
-          })
-          .catch(function (err) {
-            console.log('Google Scholar fetch failed (expected on some networks):', err.message);
-            return [];
-          });
-      }
-
-
-      // ========================================
-      // UTILITY: Parse Google Scholar HTML
-      // ========================================
-      function parseGoogleScholarHTML(html) {
-        var papers = [];
-        var parser = new DOMParser();
-        var doc = parser.parseFromString(html, 'text/html');
-        var rows = doc.querySelectorAll('tr.gsc_a_tr');
-
-        rows.forEach(function (row) {
-          var titleEl = row.querySelector('a.gsc_a_at');
-          var authorsEl = row.querySelectorAll('.gs_gray');
-          var yearEl = row.querySelector('td.gsc_a_y span');
-          var citEl = row.querySelector('td.gsc_a_c a');
-
-          if (titleEl) {
-            var paper = {
-              title: titleEl.textContent.trim(),
-              url: titleEl.getAttribute('href') || '',
-              authors: authorsEl[0] ? authorsEl[0].textContent.trim() : '',
-              journal: authorsEl[1] ? authorsEl[1].textContent.trim() : '',
-              year: yearEl ? parseInt(yearEl.textContent.trim()) || 0 : 0,
-              gsCitations: citEl ? parseInt(citEl.textContent.trim()) || 0 : 0
-            };
-
-            // Fix relative URLs
-            if (paper.url && paper.url.startsWith('/')) {
-              paper.url = 'https://scholar.google.com' + paper.url;
+          try {
+            var result = await searchPaperOnS2(paper.title);
+            if (result && result.citationCount !== undefined) {
+              paper.s2Citations = result.citationCount;
             }
-
-            papers.push(paper);
+          } catch (e) {
+            console.log('Failed to fetch:', paper.title, e);
           }
-        });
 
-        return papers;
+          // Wait 400ms between requests to avoid rate limiting
+          if (i < MY_PAPERS.length - 1) {
+            await new Promise(function (resolve) {
+              setTimeout(resolve, 400);
+            });
+          }
+        }
       }
 
 
-      // ========================================
-      // STEP 5: Merge papers from all sources
-      // ========================================
-      function mergePapers(s2Papers, gsPapers) {
-        var merged = [];
-        var titleIndex = {};
-
-        // Add S2 papers first (they have citation data)
-        s2Papers.forEach(function (p) {
-          var key = normalizeTitle(p.title || '');
-          if (key && !titleIndex[key]) {
-            var authorStr = '';
-            if (p.authors && p.authors.length > 0) {
-              authorStr = p.authors.map(function (a) { return a.name; }).join('; ');
-            }
-
-            merged.push({
-              title: p.title || '',
-              authors: authorStr,
-              journal: p.venue || (p.publicationVenue ? p.publicationVenue.name : '') || '',
-              year: p.year || 0,
-              url: p.url || '',
-              citations: p.citationCount || 0,
-              s2Id: p.paperId || ''
-            });
-
-            titleIndex[key] = true;
-          }
-        });
-
-        // Add GS papers not already in list
-        gsPapers.forEach(function (p) {
-          var key = normalizeTitle(p.title || '');
-          if (key && !titleIndex[key]) {
-            merged.push({
-              title: p.title || '',
-              authors: p.authors || '',
-              journal: p.journal || '',
-              year: p.year || 0,
-              url: p.url || '',
-              citations: p.gsCitations || 0,
-              s2Id: '',
-              needsS2Lookup: true
-            });
-            titleIndex[key] = true;
-          }
-        });
-
-        // Ensure known papers are present
-        KNOWN_PAPERS.forEach(function (kp) {
-          var key = normalizeTitle(kp.title);
-          if (key && !titleIndex[key]) {
-            merged.push({
-              title: kp.title,
-              authors: kp.authors,
-              journal: kp.journal,
-              year: kp.year,
-              url: kp.url,
-              citations: 0,
-              s2Id: '',
-              needsS2Lookup: true
-            });
-            titleIndex[key] = true;
-          }
-        });
-
-        return merged;
+      // =============================================
+      // Get best citation count (S2 preferred, GS fallback)
+      // =============================================
+      function getCitations(paper) {
+        if (paper.s2Citations !== null && paper.s2Citations !== undefined) {
+          return paper.s2Citations;
+        }
+        return paper.gsCitations || 0;
       }
 
 
-      // ========================================
-      // UTILITY: Normalize title for comparison
-      // ========================================
-      function normalizeTitle(t) {
-        return t.toLowerCase().replace(/[^a-z0-9]/g, '').substring(0, 60);
-      }
-
-
-      // ========================================
-      // STEP 6: Look up missing citation data
-      // ========================================
-      function lookupMissingCitations(papers) {
-        var promises = [];
-
-        papers.forEach(function (p, idx) {
-          if (p.needsS2Lookup) {
-            var promise = searchPaperOnS2(p.title).then(function (result) {
-              if (result) {
-                papers[idx].citations = result.citationCount || 0;
-                papers[idx].s2Id = result.paperId || '';
-                if (!papers[idx].journal && result.venue) {
-                  papers[idx].journal = result.venue;
-                }
-              }
-            });
-            promises.push(promise);
-          }
-        });
-
-        // Chain with delays to avoid rate limiting
-        var chain = Promise.resolve();
-        promises.forEach(function (p, i) {
-          chain = chain
-            .then(function () {
-              return new Promise(function (resolve) {
-                setTimeout(resolve, i * 300);
-              });
-            })
-            .then(function () { return p; });
-        });
-
-        return chain.then(function () { return papers; });
-      }
-
-
-      // ========================================
-      // STEP 7: Calculate metrics
-      // ========================================
-      function calculateMetrics(papers) {
-        var totalCitations = 0;
-        var citationsByYear = {};
+      // =============================================
+      // Calculate metrics
+      // =============================================
+      function calculateMetrics() {
         var currentYear = new Date().getFullYear();
+        var totalCitations = 0;
 
-        // Initialize years from 2022 to current
+        // Track citations by year
+        var citByYear = {};
         for (var y = 2022; y <= currentYear; y++) {
-          citationsByYear[y] = 0;
+          citByYear[y] = 0;
         }
 
-        papers.forEach(function (p) {
-          totalCitations += (p.citations || 0);
+        MY_PAPERS.forEach(function (p) {
+          var c = getCitations(p);
+          totalCitations += c;
 
-          // Attribute citations to paper's publication year
-          if (p.year && p.year >= 2022 && p.year <= currentYear) {
-            citationsByYear[p.year] += (p.citations || 0);
+          if (p.year >= 2022 && p.year <= currentYear) {
+            citByYear[p.year] += c;
           }
         });
 
-        // Convert to cumulative
-        var years = Object.keys(citationsByYear).sort();
-        var cumulative = [];
+        // Cumulative
         var running = 0;
-
-        years.forEach(function (y) {
-          running += citationsByYear[y];
-          cumulative.push({
-            year: parseInt(y),
-            citations: running
-          });
+        var yearlyData = Object.keys(citByYear).sort().map(function (y) {
+          running += citByYear[y];
+          return { year: Number(y), citations: running };
         });
 
-        // Calculate H-index
-        var citationCounts = papers
-          .map(function (p) { return p.citations || 0; })
-          .sort(function (a, b) { return b - a; });
+        // H-index
+        var sorted = MY_PAPERS.map(function (p) {
+          return getCitations(p);
+        }).sort(function (a, b) { return b - a; });
 
-        var hIndex = 0;
-        for (var i = 0; i < citationCounts.length; i++) {
-          if (citationCounts[i] >= i + 1) {
-            hIndex = i + 1;
-          } else {
-            break;
-          }
+        var h = 0;
+        for (var i = 0; i < sorted.length; i++) {
+          if (sorted[i] >= i + 1) h = i + 1;
+          else break;
         }
 
         return {
           totalCitations: totalCitations,
-          hIndex: hIndex,
-          totalPapers: papers.length,
-          yearlyData: cumulative
+          hIndex: h,
+          totalPapers: MY_PAPERS.length,
+          yearlyData: yearlyData
         };
       }
 
 
-      // ========================================
-      // STEP 8: Animate number counter
-      // ========================================
+      // =============================================
+      // Animate number counter
+      // =============================================
       function animateNumber(el, target) {
         el.innerHTML = '';
-        var duration = 1200;
+        if (target === 0) { el.textContent = '0'; return; }
+
+        var duration = 1000;
         var startTime = null;
 
         function step(timestamp) {
           if (!startTime) startTime = timestamp;
           var progress = Math.min((timestamp - startTime) / duration, 1);
-          var current = Math.floor(progress * target);
-          el.textContent = current;
-
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            el.textContent = target;
-            el.classList.add('count-animate');
-          }
+          el.textContent = Math.floor(progress * target);
+          if (progress < 1) requestAnimationFrame(step);
+          else el.textContent = target;
         }
 
-        if (target === 0) {
-          el.textContent = '0';
-        } else {
-          requestAnimationFrame(step);
-        }
+        requestAnimationFrame(step);
       }
 
 
-      // ========================================
-      // STEP 9: Render metrics dashboard
-      // ========================================
-      function renderMetrics(metrics) {
-        animateNumber(document.getElementById('totalCitations'), metrics.totalCitations);
-        animateNumber(document.getElementById('hIndex'), metrics.hIndex);
-        animateNumber(document.getElementById('totalPapers'), metrics.totalPapers);
-
-        document.getElementById('citationSource').textContent =
-          'via Semantic Scholar · ' + new Date().toLocaleDateString();
-
-        document.getElementById('chartBadge').textContent =
-          '2022 – ' + new Date().getFullYear();
-
-        renderChart(metrics.yearlyData);
-      }
-
-
-      // ========================================
-      // STEP 10: Render citation chart
-      // ========================================
+      // =============================================
+      // Render chart
+      // =============================================
       function renderChart(yearlyData) {
         var ctx = document.getElementById('citationChart').getContext('2d');
-
         var labels = yearlyData.map(function (d) { return d.year.toString(); });
-        var data = yearlyData.map(function (d) { return d.citations; });
+        var cumData = yearlyData.map(function (d) { return d.citations; });
+        var perYear = yearlyData.map(function (d, i) {
+          return i === 0 ? d.citations : d.citations - yearlyData[i - 1].citations;
+        });
 
-        // Create gradient fills
-        var gradientLine = ctx.createLinearGradient(0, 0, ctx.canvas.width, 0);
-        gradientLine.addColorStop(0, '#00c6ff');
-        gradientLine.addColorStop(1, '#7f5af0');
-
-        if (citationChart) {
-          citationChart.destroy();
-        }
+        if (citationChart) citationChart.destroy();
 
         citationChart = new Chart(ctx, {
           type: 'bar',
@@ -3256,8 +2527,8 @@
               {
                 type: 'line',
                 label: 'Cumulative Citations',
-                data: data,
-                borderColor: gradientLine,
+                data: cumData,
+                borderColor: '#00c6ff',
                 borderWidth: 3,
                 pointBackgroundColor: '#00c6ff',
                 pointBorderColor: '#fff',
@@ -3270,20 +2541,10 @@
               },
               {
                 type: 'bar',
-                label: 'Citations by Year',
-                data: yearlyData.map(function (d, i) {
-                  if (i === 0) return d.citations;
-                  return d.citations - yearlyData[i - 1].citations;
-                }),
-                backgroundColor: function (context) {
-                  var chart = context.chart;
-                  var ctx2 = chart.ctx;
-                  var gr = ctx2.createLinearGradient(0, 0, 0, chart.height);
-                  gr.addColorStop(0, 'rgba(0, 198, 255, 0.5)');
-                  gr.addColorStop(1, 'rgba(127, 90, 240, 0.1)');
-                  return gr;
-                },
-                borderColor: 'rgba(0, 198, 255, 0.6)',
+                label: 'New Citations per Year',
+                data: perYear,
+                backgroundColor: 'rgba(127, 90, 240, 0.4)',
+                borderColor: 'rgba(127, 90, 240, 0.7)',
                 borderWidth: 1,
                 borderRadius: 6,
                 order: 2
@@ -3293,24 +2554,13 @@
           options: {
             responsive: true,
             maintainAspectRatio: true,
-            interaction: {
-              intersect: false,
-              mode: 'index'
-            },
+            interaction: { intersect: false, mode: 'index' },
             plugins: {
               legend: {
-                display: true,
                 labels: {
                   color: '#8892b0',
-                  font: {
-                    family: "'Inter', sans-serif",
-                    size: 11
-                  },
-                  boxWidth: 12,
-                  boxHeight: 12,
-                  borderRadius: 3,
-                  useBorderRadius: true,
-                  padding: 16
+                  font: { family: "'Inter', sans-serif", size: 11 },
+                  boxWidth: 12, boxHeight: 12, padding: 16
                 }
               },
               tooltip: {
@@ -3320,49 +2570,18 @@
                 borderColor: 'rgba(100, 130, 200, 0.2)',
                 borderWidth: 1,
                 cornerRadius: 10,
-                titleFont: {
-                  family: "'Space Grotesk', sans-serif",
-                  weight: 600
-                },
-                bodyFont: {
-                  family: "'Inter', sans-serif"
-                },
-                padding: 12,
-                callbacks: {
-                  label: function (context) {
-                    return context.dataset.label + ': ' + context.parsed.y;
-                  }
-                }
+                padding: 12
               }
             },
             scales: {
               x: {
-                grid: {
-                  color: 'rgba(100, 130, 200, 0.06)',
-                  drawBorder: false
-                },
-                ticks: {
-                  color: '#5a6380',
-                  font: {
-                    family: "'Inter', sans-serif",
-                    size: 12
-                  }
-                }
+                grid: { color: 'rgba(100, 130, 200, 0.06)' },
+                ticks: { color: '#5a6380', font: { size: 12 } }
               },
               y: {
                 beginAtZero: true,
-                grid: {
-                  color: 'rgba(100, 130, 200, 0.06)',
-                  drawBorder: false
-                },
-                ticks: {
-                  color: '#5a6380',
-                  font: {
-                    family: "'Inter', sans-serif",
-                    size: 11
-                  },
-                  stepSize: 1
-                }
+                grid: { color: 'rgba(100, 130, 200, 0.06)' },
+                ticks: { color: '#5a6380', font: { size: 11 }, stepSize: 2 }
               }
             }
           }
@@ -3370,66 +2589,49 @@
       }
 
 
-      // ========================================
-      // STEP 11: Render publication cards
-      // ========================================
-      function renderPublications(papers) {
+      // =============================================
+      // Render publication cards
+      // =============================================
+      function renderPublications() {
         var pubList = document.getElementById('pubList');
         var loading = document.getElementById('pubLoading');
-
         if (loading) loading.style.display = 'none';
 
-        // Sort by year descending, then citations descending
-        papers.sort(function (a, b) {
+        // Sort: year desc, then citations desc
+        var sorted = MY_PAPERS.slice().sort(function (a, b) {
           if (b.year !== a.year) return b.year - a.year;
-          return (b.citations || 0) - (a.citations || 0);
+          return getCitations(b) - getCitations(a);
         });
 
         pubList.innerHTML = '';
 
-        papers.forEach(function (paper, index) {
-          var num = String(papers.length - index).padStart(2, '0');
+        sorted.forEach(function (paper, index) {
+          var num = String(sorted.length - index).padStart(2, '0');
+          var cit = getCitations(paper);
 
-          // Format authors with highlighting
-          var authorsHTML = paper.authors || '';
-          if (authorsHTML.toLowerCase().indexOf('hasan') !== -1) {
-            authorsHTML = authorsHTML.replace(
-              /(Hasan,?\s*M\.?|M\.?\s*Hasan|Mehrab\s*Hasan)/gi,
-              '<strong>$1</strong>'
-            );
-          }
-
-          // Citation badge
           var citBadge = '';
-          if (paper.citations > 0) {
+          if (cit > 0) {
             citBadge = '<span class="pub-citation-badge">' +
               '<i class="fa-solid fa-quote-left"></i> ' +
-              paper.citations + ' citations</span>';
+              cit + ' citations</span>';
           }
 
-          // Read link
           var linkHTML = '';
           if (paper.url) {
             linkHTML = '<a href="' + paper.url + '" target="_blank" class="pub-link">' +
               '<i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>';
           }
 
-          // Year badge
-          var yearBadge = paper.year
-            ? '<span class="pub-year">' + paper.year + '</span>'
-            : '';
-
-          // Build card
           var card = document.createElement('div');
           card.className = 'pub-card reveal';
           card.innerHTML =
             '<span class="pub-number">' + num + '</span>' +
             '<div class="pub-info">' +
-            '  <h3>' + (paper.title || 'Untitled') + '</h3>' +
-            '  <p class="pub-authors">' + authorsHTML + '</p>' +
+            '  <h3>' + paper.title + '</h3>' +
+            '  <p class="pub-authors">' + paper.authors + '</p>' +
             '  <div class="pub-meta">' +
             (paper.journal ? '<span class="pub-journal">' + paper.journal + '</span>' : '') +
-            yearBadge +
+            '<span class="pub-year">' + paper.year + '</span>' +
             citBadge +
             linkHTML +
             '  </div>' +
@@ -3438,8 +2640,7 @@
           pubList.appendChild(card);
         });
 
-        // Re-observe new cards for scroll reveal
-        var newReveals = pubList.querySelectorAll('.reveal');
+        // Re-observe for scroll reveal
         var obs = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
             if (e.isIntersecting) {
@@ -3449,100 +2650,55 @@
           });
         }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        newReveals.forEach(function (el) {
+        pubList.querySelectorAll('.reveal').forEach(function (el) {
           obs.observe(el);
         });
       }
 
 
-      // ========================================
-      // FALLBACK: Show known papers if APIs fail
-      // ========================================
-      function showFallback() {
-        var fallbackPapers = KNOWN_PAPERS.map(function (p) {
-          return {
-            title: p.title,
-            authors: p.authors,
-            journal: p.journal,
-            year: p.year,
-            url: p.url,
-            citations: 0
-          };
-        });
-
-        var metrics = calculateMetrics(fallbackPapers);
-        renderMetrics(metrics);
-        renderPublications(fallbackPapers);
-      }
-
-
-      // ========================================
-      // MAIN: Initialize citation system
-      // ========================================
-      async function initCitationSystem() {
+      // =============================================
+      // MAIN INIT
+      // =============================================
+      async function init() {
         try {
+          // Step 1: Fetch citation counts from Semantic Scholar
+          await fetchAllCitations();
 
-          // 1. Find author on Semantic Scholar
-          var author = await findAuthorOnS2();
+          // Step 2: Calculate metrics
+          var metrics = calculateMetrics();
 
-          var s2Papers = [];
-          if (S2_AUTHOR_ID) {
-            // 2. Get all papers from S2
-            try {
-              s2Papers = await getAuthorPapers(S2_AUTHOR_ID);
-            } catch (e) {
-              console.log('S2 author papers fetch failed:', e.message);
-            }
-          }
+          // Step 3: Render dashboard
+          animateNumber(document.getElementById('totalCitations'), metrics.totalCitations);
+          animateNumber(document.getElementById('hIndex'), metrics.hIndex);
+          animateNumber(document.getElementById('totalPapers'), metrics.totalPapers);
 
-          // 3. Try Google Scholar (best effort)
-          var gsPapers = [];
-          try {
-            gsPapers = await fetchGoogleScholarPapers();
-          } catch (e) {
-            console.log('GS fetch failed:', e.message);
-          }
+          document.getElementById('citationSource').textContent =
+            'via Semantic Scholar · ' + new Date().toLocaleDateString();
+          document.getElementById('chartBadge').textContent =
+            '2022 – ' + new Date().getFullYear();
 
-          // 4. Merge all sources
-          allPapersData = mergePapers(s2Papers, gsPapers);
+          // Step 4: Render chart
+          renderChart(metrics.yearlyData);
 
-          // 5. Look up missing citation counts
-          if (allPapersData.some(function (p) { return p.needsS2Lookup; })) {
-            try {
-              allPapersData = await lookupMissingCitations(allPapersData);
-            } catch (e) {
-              console.log('Citation lookup failed:', e.message);
-            }
-          }
-
-          // 6. If still no papers, use known list
-          if (allPapersData.length === 0) {
-            allPapersData = KNOWN_PAPERS.map(function (p) {
-              return {
-                title: p.title,
-                authors: p.authors,
-                journal: p.journal,
-                year: p.year,
-                url: p.url,
-                citations: 0
-              };
-            });
-          }
-
-          // 7. Calculate and render
-          var metrics = calculateMetrics(allPapersData);
-          renderMetrics(metrics);
-          renderPublications(allPapersData);
+          // Step 5: Render publication cards
+          renderPublications();
 
         } catch (err) {
           console.error('Citation system error:', err);
-          showFallback();
+
+          // Fallback: show with Google Scholar data
+          var metrics = calculateMetrics();
+          animateNumber(document.getElementById('totalCitations'), metrics.totalCitations);
+          animateNumber(document.getElementById('hIndex'), metrics.hIndex);
+          animateNumber(document.getElementById('totalPapers'), metrics.totalPapers);
+          document.getElementById('citationSource').textContent = 'via Google Scholar (fallback)';
+          document.getElementById('chartBadge').textContent = '2022 – ' + new Date().getFullYear();
+          renderChart(metrics.yearlyData);
+          renderPublications();
         }
       }
 
-      // Start the system
-      initCitationSystem();
-
+      init();
     })();
   </script>
 
