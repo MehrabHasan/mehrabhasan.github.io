@@ -832,8 +832,7 @@
           </div>
         </div>
         <div class="citation-updated">
-          Data from <a href="https://api.semanticscholar.org/" target="_blank">Semantic Scholar</a>
-          &amp; Google Scholar · <span id="citationDate">—</span>
+          Aggregated from multiple sources · <span id="citationDate">—</span>
         </div>
       </div>
 
@@ -890,8 +889,7 @@
             <div class="pub-meta">
               <span class="pub-journal">13th International Conference on Marine Technology</span>
               <span class="pub-year">2023</span>
-              <!-- ✏️ UPDATE: Change the number below when citation count changes -->
-              <span class="pub-citation-badge"><i class="fa-solid fa-quote-left"></i> 3 citations</span>
+              <span class="pub-citation-badge" id="cite-3"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
             </div>
           </div>
         </div>
@@ -904,8 +902,7 @@
             <div class="pub-meta">
               <span class="pub-journal">2023 ASEE Gulf-Southwest Annual Conference</span>
               <span class="pub-year">2023</span>
-              <!-- ✏️ UPDATE: Change the number below when citation count changes -->
-              <span class="pub-citation-badge"><i class="fa-solid fa-quote-left"></i> 0 citations</span>
+              <span class="pub-citation-badge" id="cite-4"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
             </div>
           </div>
         </div>
@@ -918,7 +915,7 @@
             <div class="pub-meta">
               <span class="pub-journal">Engineering Archive</span>
               <span class="pub-year">2023</span>
-              <span class="pub-citation-badge" id="cite-3"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
+              <span class="pub-citation-badge" id="cite-5"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
             </div>
           </div>
         </div>
@@ -999,14 +996,6 @@
     </div>
   </section>
 
-  <!-- ================================================================
-       ACTIVITIES — slim chronological list
-       ✏️ HOW TO UPDATE THIS SECTION LATER:
-       Each activity is one <div class="activity-item"> block.
-       To ADD a new activity: copy one block, paste at the TOP
-       (newest first), and update the date, title, desc, and url.
-       To EDIT: just change the text inside the relevant block.
-  ================================================================ -->
   <section id="activities">
     <div class="container">
       <div class="section-header reveal">
@@ -1017,7 +1006,6 @@
 
       <div class="activities-list reveal">
 
-        <!-- ✏️ ACTIVITY 1 — newest first -->
         <div class="activity-item">
           <div class="activity-date-col">
             <span class="activity-date">Apr<span class="activity-date-year">2026</span></span>
@@ -1031,7 +1019,6 @@
           </div>
         </div>
 
-        <!-- ✏️ ACTIVITY 2 -->
         <div class="activity-item">
           <div class="activity-date-col">
             <span class="activity-date">Apr<span class="activity-date-year">2026</span></span>
@@ -1049,7 +1036,6 @@
           </div>
         </div>
 
-        <!-- ✏️ ACTIVITY 3 -->
         <div class="activity-item">
           <div class="activity-date-col">
             <span class="activity-date">Feb<span class="activity-date-year">2025</span></span>
@@ -1174,88 +1160,136 @@
     })();
 
     /* ══════════════════════════════════════════════════════════════
-       6. CITATION SYSTEM
+       6. MULTI-SOURCE CITATION TRACKING SYSTEM
        ══════════════════════════════════════════════════════════════
-
-       HOW IT WORKS:
-       ─ Papers WITH a DOI  → fetched live from Semantic Scholar API
-       ─ Papers WITHOUT DOI → hardcoded Google Scholar count (manual)
-       ─ If S2 returns 0 and a fallback exists → uses fallback
-
-       PAPERS FETCHED LIVE VIA DOI (Semantic Scholar):
-         cite-0  10.1002/marc.202500962   Macromolecular Rapid Comm 2026
-         cite-1  10.3390/jcs9110633       Journal of Composites Science 2025
-         cite-2  10.1016/B978-0-...       Comprehensive Materials Processing 2024
-         cite-3  10.31224/3160            Engineering Archive 2023
-
-       PAPERS WITH HARDCODED COUNT (no DOI, conference papers):
-         Paper 03 — Numerical Analysis Laminar Flow  → 3 citations  (hardcoded in HTML)
-         Paper 02 — Aerodynamic Axial Fan            → 0 citations  (hardcoded in HTML)
-
-       ✏️ TO UPDATE HARDCODED COUNTS LATER:
-         Search for "✏️ UPDATE" in the HTML above and change the number.
-
-       ✏️ TO UPDATE DOI FALLBACKS:
-         Change the `fallback` number in the papers array below.
+       
+       This system fetches citation data from multiple APIs:
+       - Semantic Scholar (primary source via DOI)
+       - Crossref (citation metadata)
+       - OpenAlex (comprehensive academic data)
+       
+       For each paper, it queries multiple sources and uses the 
+       HIGHEST citation count found across all sources.
     ═══════════════════════════════════════════════════════════════ */
-    (function () {
 
-      /*
-        ✏️ UPDATE FALLBACK NUMBERS HERE if S2 returns 0 but you
-        know the real count from Google Scholar.
-      */
+    (function () {
+      
+      // Paper database with DOIs
       var papers = [
-        { doi: '10.1002/marc.202500962',              badgeId: 'cite-0', fallback: 1  },
-        { doi: '10.3390/jcs9110633',                  badgeId: 'cite-1', fallback: 3  },
-        { doi: '10.1016/B978-0-323-96020-5.00274-0',  badgeId: 'cite-2', fallback: 6  },
-        { doi: '10.31224/3160',                       badgeId: 'cite-3', fallback: 0  }
+        { 
+          doi: '10.1002/marc.202500962', 
+          badgeId: 'cite-0',
+          title: 'Machine Learning Assisted Prediction'
+        },
+        { 
+          doi: '10.3390/jcs9110633', 
+          badgeId: 'cite-1',
+          title: '4D-Printed Liquid Crystal Elastomers'
+        },
+        { 
+          doi: '10.1016/B978-0-323-96020-5.00274-0', 
+          badgeId: 'cite-2',
+          title: 'Advanced Nanomaterial-based Biosensors'
+        },
+        { 
+          doi: null,  // No DOI available
+          badgeId: 'cite-3',
+          title: 'Numerical Analysis of Steady Laminar Flow',
+          manualCount: 3  // Manual count from conference proceedings
+        },
+        { 
+          doi: null,  // No DOI available
+          badgeId: 'cite-4',
+          title: 'Aerodynamic Analysis and Comparison',
+          manualCount: 0
+        },
+        { 
+          doi: '10.31224/3160', 
+          badgeId: 'cite-5',
+          title: 'Numerical Study of Aerodynamic Characteristics'
+        }
       ];
 
-      /*
-        Hardcoded counts for papers without DOIs (conference papers).
-        ✏️ UPDATE THESE NUMBERS when citations change on Google Scholar.
-      */
-      var HARDCODED_TOTAL = 3 + 0; // Paper 03 (3) + Paper 02 (0)
+      var citationCounts = [];
+      var completedQueries = 0;
 
-      var counts = [0, 0, 0, 0];
-      var BASE   = 'https://api.semanticscholar.org/graph/v1/paper/';
-
-      /* Fetch by DOI directly — most reliable method */
-      function fetchDOI(doi) {
-        return fetch(BASE + 'DOI:' + encodeURIComponent(doi) + '?fields=citationCount')
-          .then(function (r) { return r.ok ? r.json() : null; })
-          .then(function (d) { return (d && typeof d.citationCount === 'number') ? d.citationCount : -1; })
-          .catch(function () { return -1; });
+      // FETCH FROM SEMANTIC SCHOLAR
+      function fetchSemanticScholar(doi) {
+        return fetch('https://api.semanticscholar.org/graph/v1/paper/DOI:' + encodeURIComponent(doi) + '?fields=citationCount')
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) { 
+            return (d && typeof d.citationCount === 'number') ? d.citationCount : 0;
+          })
+          .catch(function() { return 0; });
       }
 
-      /* Set badge text */
-      function setBadge(id, n) {
-        var el = document.getElementById(id);
+      // FETCH FROM CROSSREF
+      function fetchCrossref(doi) {
+        return fetch('https://api.crossref.org/works/' + encodeURIComponent(doi))
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) {
+            if (d && d.message && d.message['is-referenced-by-count']) {
+              return d.message['is-referenced-by-count'];
+            }
+            return 0;
+          })
+          .catch(function() { return 0; });
+      }
+
+      // FETCH FROM OPENALEX
+      function fetchOpenAlex(doi) {
+        return fetch('https://api.openalex.org/works/doi:' + encodeURIComponent(doi))
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) {
+            if (d && d.cited_by_count) {
+              return d.cited_by_count;
+            }
+            return 0;
+          })
+          .catch(function() { return 0; });
+      }
+
+      // Fetch from ALL sources and return the MAX
+      function fetchAllSources(doi) {
+        return Promise.all([
+          fetchSemanticScholar(doi),
+          fetchCrossref(doi),
+          fetchOpenAlex(doi)
+        ]).then(function(results) {
+          var max = Math.max.apply(null, results);
+          console.log('DOI ' + doi + ' citation counts:', results, '→ Using max:', max);
+          return max;
+        });
+      }
+
+      // Update individual badge
+      function setBadge(badgeId, count) {
+        var el = document.getElementById(badgeId);
         if (!el) return;
-        el.innerHTML = '<i class="fa-solid fa-quote-left"></i> ' + n + ' citation' + (n !== 1 ? 's' : '');
+        el.innerHTML = '<i class="fa-solid fa-quote-left"></i> ' + count + ' citation' + (count !== 1 ? 's' : '');
       }
 
-      /* Update dashboard totals */
+      // Update dashboard
       function updateDashboard() {
-        var doiTotal   = counts.reduce(function (a, b) { return a + b; }, 0);
-        var grandTotal = doiTotal + HARDCODED_TOTAL;
-
-        /* H-index from ALL 6 papers */
-        var allCounts = counts.concat([3, 0]); // add hardcoded paper counts
-        var sorted = allCounts.slice().sort(function (a, b) { return b - a; });
+        var total = citationCounts.reduce(function(a, b) { return a + b; }, 0);
+        
+        // Calculate h-index
+        var sorted = citationCounts.slice().sort(function(a, b) { return b - a; });
         var h = 0;
         for (var i = 0; i < sorted.length; i++) {
-          if (sorted[i] >= i + 1) h = i + 1; else break;
+          if (sorted[i] >= i + 1) h = i + 1;
+          else break;
         }
 
-        /* Animate total */
-        animateNum(document.getElementById('totalCitations'), grandTotal);
-        document.getElementById('hIndex').textContent = h;
-        document.getElementById('citationDate').textContent =
+        // Animate numbers
+        animateNum(document.getElementById('totalCitations'), total);
+        animateNum(document.getElementById('hIndex'), h);
+        
+        document.getElementById('citationDate').textContent = 
           new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       }
 
-      /* Smooth number animation */
+      // Smooth number animation
       function animateNum(el, target) {
         if (!el) return;
         if (target === 0) { el.textContent = '0'; return; }
@@ -1270,27 +1304,51 @@
         requestAnimationFrame(step);
       }
 
-      /* Sequential fetch with 400ms gap — avoids 429 rate limit */
-      function run(i) {
-        if (i >= papers.length) {
+      // Process papers sequentially with delay
+      function processPaper(index) {
+        if (index >= papers.length) {
           updateDashboard();
           return;
         }
-        var p = papers[i];
-        fetchDOI(p.doi).then(function (n) {
-          /* If S2 returned -1 (error) or 0, use fallback */
-          if (n < 0) n = p.fallback;
-          if (n === 0 && p.fallback > 0) n = p.fallback;
-          counts[i] = n;
-          setBadge(p.badgeId, n);
-          setTimeout(function () { run(i + 1); }, 400);
+
+        var paper = papers[index];
+        
+        if (!paper.doi) {
+          // Use manual count for papers without DOI
+          citationCounts[index] = paper.manualCount || 0;
+          setBadge(paper.badgeId, citationCounts[index]);
+          completedQueries++;
+          setTimeout(function() { processPaper(index + 1); }, 200);
+          return;
+        }
+
+        // Fetch from all sources
+        fetchAllSources(paper.doi).then(function(maxCount) {
+          citationCounts[index] = maxCount;
+          setBadge(paper.badgeId, maxCount);
+          completedQueries++;
+          
+          // Add 500ms delay between queries to avoid rate limiting
+          setTimeout(function() { processPaper(index + 1); }, 500);
+        }).catch(function(err) {
+          console.error('Error fetching citations for', paper.title, err);
+          citationCounts[index] = 0;
+          setBadge(paper.badgeId, 0);
+          completedQueries++;
+          setTimeout(function() { processPaper(index + 1); }, 500);
         });
       }
 
+      // Initialize arrays
+      for (var i = 0; i < papers.length; i++) {
+        citationCounts.push(0);
+      }
+
+      // Start processing when DOM is ready
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function () { run(0); });
+        document.addEventListener('DOMContentLoaded', function() { processPaper(0); });
       } else {
-        run(0);
+        processPaper(0);
       }
 
     })();
