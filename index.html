@@ -1,1447 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mehrab Hasan — Researcher &amp; Engineer</title>
-  <meta name="description"
-    content="PhD researcher in Aerospace & Mechanical Engineering — smart materials, lithium battery modeling, and physics-informed machine learning." />
+  <title>Mehrab Hasan - PhD Candidate, University of Oklahoma</title>
+  <meta name="description" content="Mehrab Hasan - PhD candidate in Aerospace and Mechanical Engineering at the University of Oklahoma. Additive manufacturing of multifunctional composites, smart materials, strain sensors for structural health monitoring, and AI/ML." />
+  <meta name="theme-color" content="#ffffff" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Favicon -->
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Academicons (Google Scholar / ResearchGate icons, same as AcademicPages) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" />
 
   <style>
+    /* =========================================================
+       THEME COLORS (AcademicPages look). Edit here to restyle.
+       ========================================================= */
     :root {
-      --bg-dark: #07080d;
-      --bg-section: #0c0e18;
-      --bg-card: rgba(17, 22, 40, 0.65);
-      --accent: #00c6ff;
-      --accent2: #7f5af0;
-      --accent3: #2ee89e;
-      --gradient: linear-gradient(135deg, #00c6ff, #7f5af0);
-      --gradient2: linear-gradient(135deg, #7f5af0, #2ee89e);
-      --text: #e2e8f0;
-      --text-dim: #8892b0;
-      --text-dimmer: #5a6380;
-      --border: rgba(100, 130, 200, 0.1);
-      --font-heading: 'Space Grotesk', sans-serif;
-      --font-body: 'Inter', sans-serif;
-      --radius: 16px;
-      --radius-sm: 10px;
-      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      --max-width: 1100px;
+      --bg: #ffffff;
+      --text: #494e52;
+      --text-light: #7a8288;
+      --heading: #3d4144;
+      --border: #f2f3f3;
+      --border-dark: #e3e5e6;
+      --link: #52adc8;
+      --link-hover: #2f7f93;
+      --footer-bg: #fafafa;
+      --code-bg: #fafafa;
+      --masthead-h: 64px;
+      --font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+    }
+    html[data-theme="dark"] {
+      --bg: #252a34;
+      --text: #eaeaea;
+      --text-light: #a7adb2;
+      --heading: #ffffff;
+      --border: #3a404c;
+      --border-dark: #4a5160;
+      --link: #73c2e1;
+      --link-hover: #a6dcf0;
+      --footer-bg: #1f232b;
+      --code-bg: #2d323d;
     }
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; scroll-padding-top: calc(var(--masthead-h) + 16px); }
     body {
-      font-family: var(--font-body);
-      background: var(--bg-dark);
-      color: var(--text);
-      line-height: 1.7;
-      font-weight: 400;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      margin: 0; padding-top: var(--masthead-h);
+      font-family: var(--font); color: var(--text); background: var(--bg);
+      line-height: 1.5; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--link-hover); text-decoration: underline; }
+    img { max-width: 100%; }
+
+    /* ---------------- MASTHEAD (top navigation) ---------------- */
+    .masthead {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 20;
+      height: var(--masthead-h); background: var(--bg);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .masthead__inner {
+      max-width: 1280px; height: 100%; margin: 0 auto; padding: 0 1.5em;
+      display: flex; align-items: center; gap: 1.25em;
+    }
+    .site-title { font-weight: 700; font-size: 1.1em; color: var(--heading); white-space: nowrap; }
+    .site-title:hover { text-decoration: none; color: var(--link); }
+    .nav-links { display: flex; align-items: center; gap: 1.1em; list-style: none; margin: 0; padding: 0; flex: 1; }
+    .nav-links a { color: var(--text); font-size: 0.95em; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--link); text-decoration: none; }
+    .masthead__btn {
+      background: none; border: 0; color: var(--text); cursor: pointer;
+      font-size: 1.1em; padding: 0.4em; line-height: 1;
+    }
+    .masthead__btn:hover { color: var(--link); }
+    #navToggle { display: none; margin-left: auto; }
+
+    /* ---------------- LAYOUT ---------------- */
+    .page-wrap {
+      max-width: 1280px; margin: 0 auto; padding: 2em 1.5em 0;
+      display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 3em;
     }
 
-    a { color: var(--accent); text-decoration: none; transition: var(--transition); }
-    a:hover { color: #fff; }
-    img { max-width: 100%; display: block; }
-    ul { list-style: none; }
+    /* ---------------- SIDEBAR (author profile) ---------------- */
+    .sidebar { position: sticky; top: calc(var(--masthead-h) + 2em); align-self: start; }
+    .author__avatar img {
+      width: 100%; max-width: 175px; aspect-ratio: 1 / 1; object-fit: cover;
+      border-radius: 50%; padding: 5px; border: 1px solid var(--border-dark); display: block;
+    }
+    .author__name { margin: 0.75em 0 0.15em; font-size: 1.25em; color: var(--heading); }
+    .author__bio { margin: 0 0 1em; font-size: 0.9em; color: var(--text-light); line-height: 1.45; }
+    .follow-btn {
+      display: none; background: var(--bg); border: 1px solid var(--border-dark);
+      color: var(--text); border-radius: 4px; padding: 0.35em 0.9em; font-size: 0.85em; cursor: pointer;
+    }
+    .author__urls { list-style: none; margin: 0; padding: 0; font-size: 0.9em; }
+    .author__urls li { margin-bottom: 0.55em; white-space: nowrap; }
+    .author__urls a { color: var(--text); }
+    .author__urls a:hover { color: var(--link); }
+    .author__urls i { width: 1.4em; text-align: center; margin-right: 0.35em; }
+    .ic-loc { color: var(--text); }
+    .ic-mail { color: var(--text); }
+    .ic-li { color: #0077b5; }
+    .ic-gh { color: var(--heading); }
+    .ic-gs { color: #4285f4; }
+    .ic-rg { color: #00ccbb; }
+    .ic-cv { color: #d9534f; }
 
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-dark); }
-    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 10px; }
+    /* ---------------- MAIN CONTENT ---------------- */
+    .page__content { min-width: 0; padding-bottom: 2em; }
+    .page__content h1 { font-size: 1.75em; color: var(--heading); margin: 0 0 0.6em; }
+    .page__content h2 {
+      font-size: 1.4em; color: var(--heading); margin: 1.9em 0 0.75em;
+      padding-bottom: 0.4em; border-bottom: 1px solid var(--border-dark);
+    }
+    .page__content h3 { font-size: 1.08em; color: var(--heading); margin: 1.3em 0 0.35em; }
+    .page__content p { margin: 0 0 1.1em; }
+    .page__content ul { padding-left: 1.3em; margin: 0 0 1em; }
+    .page__content li { margin-bottom: 0.35em; }
+    .muted { color: var(--text-light); }
+    .small { font-size: 0.9em; }
 
-    /* LOADER */
-    #loader {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--bg-dark);
-      display: flex; align-items: center; justify-content: center;
-      transition: opacity 0.6s, visibility 0.6s;
-    }
-    #loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .loader-ring {
-      width: 56px; height: 56px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* Education */
+    .edu-item { margin-bottom: 1em; }
+    .edu-item .deg { font-weight: 600; color: var(--heading); }
+    .edu-item .meta { color: var(--text-light); font-size: 0.93em; }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      padding: 0 24px; height: 70px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(7, 8, 13, 0.6);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid transparent;
-      transition: var(--transition);
-    }
-    nav.scrolled { border-bottom-color: var(--border); background: rgba(7, 8, 13, 0.92); }
-    .nav-logo {
-      font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;
-      background: var(--gradient);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .nav-links { display: flex; gap: 8px; align-items: center; }
-    .nav-links a {
-      font-size: 0.85rem; font-weight: 500; padding: 8px 16px;
-      color: var(--text-dim); border-radius: 8px;
-      transition: var(--transition); position: relative;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--accent); background: rgba(0, 198, 255, 0.06);
-    }
-    .nav-links a.active::after {
-      content: ''; position: absolute; bottom: 4px; left: 50%;
-      transform: translateX(-50%); width: 4px; height: 4px;
-      border-radius: 50%; background: var(--accent);
-    }
-    .hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      cursor: pointer; padding: 8px; z-index: 1001;
-    }
-    .hamburger span {
-      width: 24px; height: 2px; background: var(--text);
-      border-radius: 2px; transition: var(--transition);
-    }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.25em 2.5em; }
+    .skills-grid h3 { margin-top: 0.8em; }
+    .skills-grid h3 i { color: var(--link); margin-right: 0.35em; width: 1.2em; text-align: center; }
 
-    .scroll-progress {
-      position: fixed; top: 70px; left: 0; height: 2px; z-index: 999;
-      background: var(--gradient); width: 0%; transition: none;
-    }
+    /* Experience */
+    .job { margin-bottom: 1.6em; }
+    .job h3 { margin-bottom: 0.1em; }
+    .job .org { margin: 0; }
+    .job .date { margin: 0 0 0.5em; color: var(--text-light); font-style: italic; font-size: 0.93em; }
+    .job .proj-title { font-weight: 600; color: var(--heading); }
 
-    /* HERO */
-    .hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 120px 24px 80px; overflow: hidden;
+    /* Publications */
+    .pub-list { padding-left: 1.6em !important; }
+    .pub-list li { margin-bottom: 0.9em !important; }
+    .pub-title { font-weight: 600; color: var(--heading); }
+    a.pub-title { color: var(--link); }
+    sub, sup { line-height: 0; }
+    .pub-venue { font-style: italic; }
+    .pub-tag {
+      display: inline-block; font-size: 0.75em; padding: 0 0.5em; margin-left: 0.3em;
+      border: 1px solid var(--border-dark); border-radius: 3px; color: var(--text-light); font-style: normal;
     }
-    #particles-canvas { position: absolute; inset: 0; z-index: 0; }
-    .hero::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 200px; background: linear-gradient(transparent, var(--bg-dark)); z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; text-align: center; max-width: 820px; }
-    .hero-greeting {
-      font-size: 1rem; font-weight: 500; color: var(--accent);
-      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;
-      opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
-    }
-    .hero-name {
-      font-family: var(--font-heading); font-size: clamp(2.8rem, 7vw, 5rem);
-      font-weight: 700; line-height: 1.1; margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff 0%, #00c6ff 50%, #7f5af0 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
-    }
-    .hero-title {
-      font-size: clamp(1rem, 2.2vw, 1.3rem); color: var(--text-dim);
-      margin-bottom: 32px; max-width: 640px; margin-inline: auto;
-      opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
-    }
-    .hero-tags {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 12px; margin-bottom: 40px;
-      opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
-    }
-    .hero-tag {
-      padding: 8px 20px; border-radius: 100px; font-size: 0.82rem; font-weight: 500;
-      border: 1px solid var(--border); color: var(--text-dim);
-      background: rgba(17, 22, 40, 0.5); backdrop-filter: blur(8px);
-      transition: var(--transition);
-    }
-    .hero-tag:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-btns {
-      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
-    }
+    .profile-btns { display: flex; flex-wrap: wrap; gap: 0.6em; margin: 0.5em 0 1.4em; }
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; border-radius: 100px; font-size: 0.9rem;
-      font-weight: 600; font-family: var(--font-body);
-      cursor: pointer; transition: var(--transition); border: none;
+      display: inline-flex; align-items: center; gap: 0.45em; font-size: 0.88em;
+      padding: 0.4em 0.95em; border: 1px solid var(--border-dark); border-radius: 4px;
+      color: var(--text); background: var(--bg);
     }
-    .btn-primary {
-      background: var(--gradient); color: #fff;
-      box-shadow: 0 4px 24px rgba(0, 198, 255, 0.25);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0, 198, 255, 0.35); color: #fff; }
-    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid rgba(0, 198, 255, 0.4); }
-    .btn-outline:hover { background: rgba(0, 198, 255, 0.08); transform: translateY(-2px); color: var(--accent); }
+    .btn:hover { border-color: var(--link); color: var(--link); text-decoration: none; }
 
-    .scroll-indicator {
-      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-      z-index: 2; display: flex; flex-direction: column; align-items: center;
-      gap: 8px; color: var(--text-dimmer); font-size: 0.75rem; letter-spacing: 2px;
-      opacity: 0; animation: fadeUp 0.8s 1.4s forwards;
-    }
-    .scroll-indicator .mouse {
-      width: 24px; height: 38px; border: 2px solid var(--text-dimmer);
-      border-radius: 12px; position: relative;
-    }
-    .scroll-indicator .mouse::after {
-      content: ''; position: absolute; top: 8px; left: 50%;
-      transform: translateX(-50%); width: 3px; height: 8px;
-      background: var(--accent); border-radius: 2px;
-      animation: scrollDown 1.6s ease-in-out infinite;
-    }
-    @keyframes scrollDown {
-      0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-      60% { opacity: 0; transform: translateX(-50%) translateY(12px); }
-    }
+    /* Activities & Updates (Recent News style) */
+    .news-list li.news-hidden { display: none; }
+    .news-list.expanded li.news-hidden { display: list-item; }
+    .news-date { font-weight: 700; color: var(--heading); }
+    #newsToggle { margin-top: 0.3em; cursor: pointer; font-family: inherit; }
 
-    /* SECTIONS */
-    section { padding: 100px 24px; position: relative; }
-    .section-header { text-align: center; margin-bottom: 64px; }
-    .section-label {
-      font-size: 0.8rem; font-weight: 600; color: var(--accent);
-      letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;
+    /* ---------------- FOOTER ---------------- */
+    .page__footer {
+      margin-top: 3em; background: var(--footer-bg); border-top: 1px solid var(--border-dark);
+      color: var(--text-light); font-size: 0.85em;
     }
-    .section-title {
-      font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 700; color: #fff; margin-bottom: 16px;
-    }
-    .section-line { width: 60px; height: 3px; border-radius: 3px; background: var(--gradient); margin: 0 auto; }
-    .container { max-width: var(--max-width); margin: 0 auto; }
+    .page__footer-inner { max-width: 1280px; margin: 0 auto; padding: 1.6em 1.5em; }
+    .page__footer-follow { list-style: none; padding: 0; margin: 0 0 0.6em; display: flex; flex-wrap: wrap; gap: 1.1em; }
+    .page__footer-follow strong { color: var(--text); }
+    .page__footer-follow a { color: var(--text-light); }
+    .page__footer-follow a:hover { color: var(--link); }
+    .page__footer p { margin: 0; }
 
-    /* BACKGROUND */
-    #background { background: var(--bg-section); }
-    .about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: start; }
-    .about-photo-wrapper { position: relative; }
-    .about-photo {
-      width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--radius);
-      position: relative; z-index: 1; border: 2px solid var(--border); transition: var(--transition);
-    }
-    .about-photo:hover { border-color: var(--accent); transform: translateY(-4px); }
-    .about-photo-wrapper::after {
-      content: ''; position: absolute; inset: 12px -12px -12px 12px;
-      border: 2px solid var(--accent2); border-radius: var(--radius);
-      opacity: 0.3; z-index: 0; transition: var(--transition);
-    }
-    .about-photo-wrapper:hover::after { inset: 8px -8px -8px 8px; opacity: 0.5; }
-    .about-text p { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.85; }
-    .about-text p strong { color: var(--text); font-weight: 600; }
-
-    .edu-cards { margin-top: 40px; }
-    .edu-cards h3, .skills-wrap h3 {
-      font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 20px;
-      color: #fff; display: flex; align-items: center; gap: 10px;
-    }
-    .edu-card {
-      padding: 20px 24px; border-radius: var(--radius-sm);
-      background: var(--bg-card); border: 1px solid var(--border);
-      margin-bottom: 12px; transition: var(--transition); backdrop-filter: blur(10px);
-    }
-    .edu-card:hover { border-color: var(--accent); transform: translateX(4px); }
-    .edu-card .degree { font-weight: 600; color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
-    .edu-card .school { color: var(--accent); font-size: 0.88rem; font-weight: 500; margin-bottom: 2px; }
-    .edu-card .year { color: var(--text-dimmer); font-size: 0.8rem; }
-
-    .skills-wrap { margin-top: 40px; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skill-tag {
-      padding: 7px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 500;
-      border: 1px solid var(--border); color: var(--text-dim);
-      background: var(--bg-card); transition: var(--transition);
-    }
-    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
-    .skill-tag.accent2 { border-color: rgba(127, 90, 240, 0.3); }
-    .skill-tag.accent2:hover { border-color: var(--accent2); color: var(--accent2); }
-    .skill-tag.accent3 { border-color: rgba(46, 232, 158, 0.3); }
-    .skill-tag.accent3:hover { border-color: var(--accent3); color: var(--accent3); }
-
-    /* RESEARCH */
-    #research { background: var(--bg-dark); }
-    .research-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-    .research-card {
-      padding: 32px 28px; border-radius: var(--radius);
-      background: var(--bg-card); border: 1px solid var(--border);
-      backdrop-filter: blur(10px); transition: var(--transition);
-      position: relative; overflow: hidden;
-    }
-    .research-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: var(--gradient); opacity: 0; transition: var(--transition);
-    }
-    .research-card:hover { border-color: rgba(0, 198, 255, 0.2); transform: translateY(-4px); }
-    .research-card:hover::before { opacity: 1; }
-    .research-icon {
-      width: 50px; height: 50px; border-radius: 12px;
-      background: rgba(0, 198, 255, 0.08);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px; font-size: 1.3rem; color: var(--accent);
-    }
-    .research-card:nth-child(2) .research-icon { background: rgba(127, 90, 240, 0.08); color: var(--accent2); }
-    .research-card:nth-child(3) .research-icon { background: rgba(46, 232, 158, 0.08); color: var(--accent3); }
-    .research-card:nth-child(4) .research-icon { background: rgba(255, 170, 50, 0.08); color: #ffaa32; }
-    .research-card h3 { font-family: var(--font-heading); font-size: 1.1rem; color: #fff; margin-bottom: 12px; font-weight: 600; }
-    .research-card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.7; }
-
-    /* PUBLICATIONS */
-    #publications { background: var(--bg-section); }
-
-    /* ── CITATION DASHBOARD (redesigned) ── */
-    .citation-dashboard { max-width: 820px; margin: 0 auto 52px; }
-
-    .citation-stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 0;
-    }
-
-    .citation-stat-card {
-      padding: 32px 20px 28px;
-      border-radius: var(--radius);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-
-    .citation-stat-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 10%; right: 10%;
-      height: 1px;
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .citation-stat-card:nth-child(1)::after { background: var(--accent); }
-    .citation-stat-card:nth-child(2)::after { background: var(--accent2); }
-    .citation-stat-card:nth-child(3)::after { background: var(--accent3); }
-
-    .citation-stat-card:hover { transform: translateY(-5px); border-color: rgba(0,198,255,0.2); }
-    .citation-stat-card:hover::after { opacity: 1; }
-
-    .citation-stat-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px; font-size: 1.1rem;
-    }
-
-    .citation-stat-card:nth-child(1) .citation-stat-icon { background: rgba(0,198,255,0.1); color: var(--accent); }
-    .citation-stat-card:nth-child(2) .citation-stat-icon { background: rgba(127,90,240,0.1); color: var(--accent2); }
-    .citation-stat-card:nth-child(3) .citation-stat-icon { background: rgba(46,232,158,0.1); color: var(--accent3); }
-
-    .citation-stat-number {
-      font-family: var(--font-heading);
-      font-size: 3.2rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 8px;
-      letter-spacing: -1px;
-    }
-
-    .citation-stat-card:nth-child(1) .citation-stat-number { color: var(--accent); }
-    .citation-stat-card:nth-child(2) .citation-stat-number { color: var(--accent2); }
-    .citation-stat-card:nth-child(3) .citation-stat-number { color: var(--accent3); }
-
-    .citation-stat-label {
-      font-size: 0.75rem; color: var(--text-dimmer);
-      font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px;
-    }
-
-    .citation-stat-sub {
-      font-size: 0.7rem; color: var(--text-dimmer);
-      margin-top: 6px; opacity: 0.7;
-    }
-
-    .citation-updated {
-      text-align: center;
-      margin-top: 14px;
-      font-size: 0.72rem;
-      color: var(--text-dimmer);
-    }
-
-    .citation-updated a { color: var(--text-dimmer); border-bottom: 1px solid var(--border); }
-    .citation-updated a:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* PUBLICATIONS LIST */
-    .pub-list { max-width: 820px; margin: 0 auto; }
-    .pub-card {
-      padding: 28px 32px; border-radius: var(--radius);
-      background: var(--bg-card); border: 1px solid var(--border);
-      margin-bottom: 16px; transition: var(--transition);
-      backdrop-filter: blur(10px); position: relative;
-      display: flex; gap: 24px; align-items: flex-start;
-    }
-    .pub-card:hover { border-color: rgba(0, 198, 255, 0.25); transform: translateX(4px); }
-    .pub-number {
-      font-family: var(--font-heading); font-size: 2rem; font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      line-height: 1; min-width: 40px;
-    }
-    .pub-info h3 {
-      font-family: var(--font-heading); font-size: 1.05rem;
-      color: #fff; font-weight: 600; margin-bottom: 8px; line-height: 1.5;
-    }
-    .pub-info .pub-authors { color: var(--text-dim); font-size: 0.88rem; margin-bottom: 8px; }
-    .pub-info .pub-authors strong { color: var(--accent); font-weight: 600; }
-    .pub-meta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-    .pub-journal { font-size: 0.82rem; font-weight: 500; color: var(--accent2); font-style: italic; }
-    .pub-year {
-      font-size: 0.78rem; padding: 3px 12px; border-radius: 100px;
-      background: rgba(127, 90, 240, 0.1); color: var(--accent2); font-weight: 600;
-    }
-    .pub-link { font-size: 0.82rem; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
-    .pub-scholar-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      margin-top: 32px; padding: 12px 28px; border-radius: 100px;
-      border: 1.5px solid rgba(0, 198, 255, 0.3);
-      color: var(--accent); font-size: 0.9rem; font-weight: 600; transition: var(--transition);
-    }
-    .pub-scholar-btn:hover { background: rgba(0, 198, 255, 0.08); color: var(--accent); }
-    .pub-citation-badge {
-      display: inline-flex; align-items: center; gap: 5px;
-      font-size: 0.75rem; padding: 3px 10px; border-radius: 100px;
-      background: rgba(0, 198, 255, 0.07); color: var(--accent);
-      font-weight: 600; border: 1px solid rgba(0, 198, 255, 0.18);
-    }
-
-    /* EXPERIENCE */
-    #experience { background: var(--bg-dark); }
-    .timeline { max-width: 780px; margin: 0 auto; position: relative; }
-    .timeline::before {
-      content: ''; position: absolute; top: 0; bottom: 0; left: 24px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
-      opacity: 0.3; border-radius: 2px;
-    }
-    .timeline-item { padding-left: 64px; padding-bottom: 48px; position: relative; }
-    .timeline-item:last-child { padding-bottom: 0; }
-    .timeline-dot {
-      position: absolute; left: 16px; top: 6px; width: 18px; height: 18px;
-      border-radius: 50%; background: var(--bg-dark); border: 3px solid var(--accent); z-index: 1;
-    }
-    .timeline-item:nth-child(2) .timeline-dot { border-color: var(--accent2); }
-    .timeline-item:nth-child(3) .timeline-dot { border-color: var(--accent3); }
-    .timeline-item:nth-child(4) .timeline-dot { border-color: var(--accent); }
-    .timeline-header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-    .timeline-role { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; color: #fff; }
-    .timeline-period {
-      font-size: 0.8rem; padding: 4px 14px; border-radius: 100px;
-      background: rgba(0, 198, 255, 0.08); color: var(--accent); font-weight: 600;
-    }
-    .timeline-item:nth-child(2) .timeline-period { background: rgba(127,90,240,0.08); color: var(--accent2); }
-    .timeline-item:nth-child(3) .timeline-period { background: rgba(46,232,158,0.08); color: var(--accent3); }
-    .timeline-org { font-size: 0.95rem; color: var(--accent); font-weight: 500; margin-bottom: 14px; }
-    .timeline-item:nth-child(2) .timeline-org { color: var(--accent2); }
-    .timeline-item:nth-child(3) .timeline-org { color: var(--accent3); }
-    .timeline-details li {
-      color: var(--text-dim); font-size: 0.92rem; margin-bottom: 8px;
-      padding-left: 18px; position: relative; line-height: 1.65;
-    }
-    .timeline-details li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); font-size: 0.85rem; }
-    .timeline-item:nth-child(2) .timeline-details li::before { color: var(--accent2); }
-    .timeline-item:nth-child(3) .timeline-details li::before { color: var(--accent3); }
-
-    /* ── ACTIVITIES — slim list design ── */
-    #activities { background: var(--bg-section); }
-
-    .activities-list {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .activity-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .activity-item:last-child { border-bottom: none; }
-
-    .activity-item:hover .activity-item-title { color: var(--accent); }
-
-    .activity-date-col {
-      flex-shrink: 0;
-      width: 90px;
-      text-align: right;
-    }
-
-    .activity-date {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      letter-spacing: 0.5px;
-      line-height: 1.4;
-    }
-
-    .activity-date-year {
-      font-size: 0.7rem;
-      color: var(--text-dimmer);
-      display: block;
-    }
-
-    .activity-dot-col {
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 5px;
-    }
-
-    .activity-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg-section);
-      box-shadow: 0 0 0 2px var(--accent);
-      flex-shrink: 0;
-    }
-
-    .activity-content-col { flex: 1; min-width: 0; }
-
-    .activity-item-title {
-      font-family: var(--font-heading);
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 5px;
-      line-height: 1.4;
-      transition: var(--transition);
-    }
-
-    .activity-item-desc {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-      margin-bottom: 8px;
-    }
-
-    .activity-item-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-dimmer);
-      border: 1px solid var(--border);
-      padding: 3px 10px;
-      border-radius: 100px;
-      transition: var(--transition);
-    }
-
-    .activity-item-link:hover {
-      color: var(--accent);
-      border-color: rgba(0,198,255,0.3);
-      background: rgba(0,198,255,0.05);
-    }
-
-    .activity-item-link i { font-size: 0.7rem; }
-
-    /* CONTACT */
-    #contact { background: var(--bg-dark); }
-    .contact-wrapper { max-width: 640px; margin: 0 auto; text-align: center; }
-    .contact-wrapper > p { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 40px; line-height: 1.85; }
-    .contact-email {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 1.25rem; font-weight: 600; color: var(--accent);
-      margin-bottom: 40px; transition: var(--transition);
-    }
-    .contact-email:hover { color: #fff; }
-    .social-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    .social-link {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-dim); font-size: 1.2rem; transition: var(--transition);
-    }
-    .social-link:hover {
-      color: var(--accent); border-color: var(--accent);
-      transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,198,255,0.15);
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 40px 24px;
-      border-top: 1px solid var(--border);
-      color: var(--text-dimmer); font-size: 0.82rem;
-    }
-    footer a { color: var(--text-dim); }
-    footer a:hover { color: var(--accent); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo-wrapper { max-width: 220px; margin: 0 auto; }
-      .research-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 16px; height: 60px; }
-      .scroll-progress { top: 60px; }
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 1024px) {
       .nav-links {
-        position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
-        flex-direction: column; justify-content: center;
-        background: rgba(10,12,20,0.98); backdrop-filter: blur(20px);
-        padding: 40px; transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
-        border-left: 1px solid var(--border);
+        display: none; position: absolute; top: var(--masthead-h); right: 0; left: 0;
+        flex-direction: column; align-items: flex-start; gap: 0; background: var(--bg);
+        border-bottom: 1px solid var(--border-dark); padding: 0.4em 1.5em 0.8em;
       }
-      .nav-links.open { right: 0; }
-      .nav-links a { font-size: 1.1rem; padding: 12px 16px; }
-      .hamburger { display: flex; }
-      .hero { padding: 90px 16px 50px; min-height: 100svh; }
-      .hero-name { font-size: 2.2rem; }
-      .hero-title { font-size: 0.95rem; }
-      .hero-tag { padding: 6px 14px; font-size: 0.72rem; }
-      .btn { padding: 12px 24px; font-size: 0.85rem; }
-      section { padding: 60px 16px; }
-      .section-title { font-size: 1.6rem; }
-      .research-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-      .pub-card { flex-direction: column; gap: 12px; padding: 20px 18px; }
-      .pub-number { font-size: 1.5rem; }
-      .timeline::before { left: 14px; }
-      .timeline-item { padding-left: 44px; padding-bottom: 36px; }
-      .timeline-dot { left: 6px; top: 4px; width: 16px; height: 16px; }
-      .citation-stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .citation-stat-number { font-size: 2.4rem; }
-      .activity-date-col { width: 72px; }
-      .activity-item { gap: 14px; }
-      footer { padding: 28px 16px; }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 0.55em 0; }
+      #navToggle { display: block; }
     }
-
+    @media (max-width: 860px) {
+      .page-wrap { grid-template-columns: 1fr; gap: 1.5em; padding-top: 1.5em; }
+      .sidebar {
+        position: static; display: grid; grid-template-columns: 96px 1fr;
+        gap: 0 1em; align-items: center;
+        border-bottom: 1px solid var(--border-dark); padding-bottom: 1.2em;
+      }
+      .author__avatar img { max-width: 96px; }
+      .author__name { margin-top: 0; }
+      .author__bio { margin-bottom: 0.6em; }
+      .follow-btn { display: inline-block; }
+      .author__urls {
+        display: none; grid-column: 1 / -1; margin-top: 1em;
+        border: 1px solid var(--border-dark); border-radius: 4px; padding: 0.9em 1em 0.4em;
+      }
+      .author__urls.open { display: block; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 480px) {
-      .hero { padding: 80px 14px 40px; }
-      .hero-name { font-size: 1.8rem; }
-      .hero-btns { flex-direction: column; align-items: stretch; gap: 10px; }
-      .btn { width: 100%; justify-content: center; }
-      section { padding: 48px 14px; }
-      .research-grid { grid-template-columns: 1fr; }
-      .citation-stats-row { grid-template-columns: 1fr; gap: 10px; }
-      .citation-stat-number { font-size: 2.8rem; }
-      .activity-date-col { display: none; }
-    }
-
-    @media (max-width: 360px) {
-      .hero-name { font-size: 1.5rem; }
-      .btn { padding: 10px 18px; font-size: 0.78rem; }
-      section { padding: 40px 12px; }
-      .nav-links { width: 240px; padding: 30px; }
+      .masthead__inner, .page-wrap, .page__footer-inner { padding-left: 1em; padding-right: 1em; }
+      .page__content h1 { font-size: 1.5em; }
+      .page__content h2 { font-size: 1.25em; }
     }
   </style>
 </head>
 
 <body>
 
-  <div id="loader"><div class="loader-ring"></div></div>
-  <div class="scroll-progress" id="scrollProgress"></div>
-
-  <nav id="navbar">
-    <a href="#" class="nav-logo">MH</a>
-    <div class="nav-links" id="navLinks">
-      <a href="#background">Background</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#experience">Experience</a>
-      <a href="#activities">Activities</a>
-      <a href="#contact">Contact</a>
+  <!-- =====================================================
+       TOP NAVIGATION
+       ===================================================== -->
+  <header class="masthead">
+    <div class="masthead__inner">
+      <a class="site-title" href="#about">Mehrab Hasan</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#updates">Updates</a></li>
+        <li><a href="assets/Mehrab_Hasan_CV.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+      <button class="masthead__btn" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle light/dark theme"><i class="fa-solid fa-sun"></i></button>
+      <button class="masthead__btn" id="navToggle" title="Menu" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
     </div>
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
+  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-content">
-      <p class="hero-greeting">Welcome to my portfolio</p>
-      <h1 class="hero-name">Mehrab Hasan</h1>
-      <p class="hero-title">
-        PhD Researcher in Aerospace &amp; Mechanical Engineering at the
-        University of Oklahoma — working at the intersection of
-        <strong style="color:var(--accent)">smart materials</strong>,
-        <strong style="color:var(--accent2)">energy materials</strong>, and
-        <strong style="color:var(--accent3)">machine learning</strong>.
-      </p>
-      <div class="hero-tags">
-        <span class="hero-tag">Shape Memory Composites</span>
-        <span class="hero-tag">Li-ion &amp; Li-metal Batteries</span>
-        <span class="hero-tag">Physics-Informed ML</span>
-        <span class="hero-tag">Additive Manufacturing</span>
+  <div class="page-wrap">
+
+    <!-- =====================================================
+         SIDEBAR (photo, name, title, links)
+         ===================================================== -->
+    <aside class="sidebar">
+      <div class="author__avatar">
+        <img src="assets/Profilephoto.jpg" alt="Mehrab Hasan" />
       </div>
-      <div class="hero-btns">
-        <a href="#research" class="btn btn-primary"><i class="fa-solid fa-microscope"></i> View Research</a>
-        <a href="Mehrab_Summer_Intern_OU_2026.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-download"></i> Download CV</a>
+      <div>
+        <h3 class="author__name">Mehrab Hasan</h3>
+        <p class="author__bio">Ph.D. Candidate, School of Aerospace and Mechanical Engineering, University of Oklahoma</p>
+        <button class="follow-btn" id="followToggle">Follow <i class="fa-solid fa-chevron-down"></i></button>
       </div>
-    </div>
-    <div class="scroll-indicator"><div class="mouse"></div><span>SCROLL</span></div>
-  </section>
+      <ul class="author__urls" id="authorUrls">
+        <li><i class="fa-solid fa-location-dot ic-loc"></i>Norman, Oklahoma, USA</li>
+        <li><a href="mailto:mehrab.hasan3513@gmail.com"><i class="fa-solid fa-envelope ic-mail"></i>Email</a></li>
+        <li><a href="https://www.linkedin.com/in/mehrab-hasan-974471129/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin ic-li"></i>LinkedIn</a></li>
+        <li><a href="https://github.com/mehrabhasan" target="_blank" rel="noopener"><i class="fa-brands fa-github ic-gh"></i>GitHub</a></li>
+        <li><a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar ic-gs"></i>Google Scholar</a></li>
+        <li><a href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" rel="noopener"><i class="ai ai-researchgate ic-rg"></i>ResearchGate</a></li>
+        <li><a href="assets/Mehrab_Hasan_CV.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf ic-cv"></i>Curriculum Vitae</a></li>
+      </ul>
+    </aside>
 
-  <!-- BACKGROUND -->
-  <section id="background">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">About Me</p>
-        <h2 class="section-title">Background</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="about-grid">
-        <div class="about-photo-wrapper reveal">
-          <img src="assets/Profilephoto.jpg" alt="Mehrab Hasan" class="about-photo" />
-        </div>
-        <div class="about-text">
-          <p class="reveal">I am a <strong>PhD researcher</strong> in the School of Aerospace &amp; Mechanical Engineering at the <strong>University of Oklahoma</strong>. My work lies at the convergence of experimental materials science, electrochemical energy systems, and data-driven modeling.</p>
-          <p class="reveal">My current research spans <strong>shape memory polymer composites</strong> — where I develop ML-assisted models for predicting shape recovery behavior. I had previous experience working in the development of <strong>lithium-ion / lithium-metal battery</strong> systems, including physics-based degradation modeling and model-predictive control strategies.</p>
-          <p class="reveal">Previously at the <strong>University of North Texas</strong>, I worked on next-generation Metal–CO₂ batteries with 2D transition-metal dichalcogenide catalysts and additively manufactured Zn–V₂O₅ batteries, gaining deep expertise in electrochemical characterization and functional material fabrication.</p>
-          <div class="edu-cards reveal">
-            <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-            <div class="edu-card">
-              <p class="degree">Ph.D. in Aerospace &amp; Mechanical Engineering</p>
-              <p class="school">University of Oklahoma, Norman, OK</p>
-              <p class="year">2024 – Present</p>
-            </div>
-            <div class="edu-card">
-              <p class="degree">MS in Material Science and Engineering</p>
-              <p class="school">University of North Texas, Denton, TX</p>
-              <p class="year">2022 – 2024</p>
-            </div>
-            <div class="edu-card">
-              <p class="degree">BSc in Naval Architecture and Marine Engineering</p>
-              <p class="school">Bangladesh University of Engineering and Technology, Dhaka, Bangladesh</p>
-              <p class="year">2016 – 2021</p>
-            </div>
-          </div>
-          <div class="skills-wrap reveal">
-            <h3><i class="fa-solid fa-code"></i> Skills &amp; Tools</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">MATLAB</span>
-              <span class="skill-tag">Machine Learning</span>
-              <span class="skill-tag accent2">SEM/Raman Spectroscopy</span>
-              <span class="skill-tag accent2">ANSYS</span>
-              <span class="skill-tag accent2">SolidWorks/Fusion 360</span>
-              <span class="skill-tag accent3">EIS / CV / Cycling</span>
-              <span class="skill-tag accent3">Coin Cell Fabrication/Disassembly</span>
-              <span class="skill-tag">DMA / TGA / DSC</span>
-              <span class="skill-tag accent2">Additive Manufacturing</span>
-              <span class="skill-tag accent3">PyBaMM</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+    <main class="page__content">
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">What I Work On</p>
-        <h2 class="section-title">Research Interests</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="research-grid">
-        <div class="research-card reveal reveal-delay-1">
-          <div class="research-icon"><i class="fa-solid fa-atom"></i></div>
-          <h3>Shape Memory Polymer Composites</h3>
-          <p>Developing ML-assisted prediction models for shape recovery behavior of carbon-fiber-reinforced shape-memory epoxy composites. Studying thermo-mechanical programming and recovery mechanisms.</p>
-        </div>
-        <div class="research-card reveal reveal-delay-2">
-          <div class="research-icon"><i class="fa-solid fa-battery-full"></i></div>
-          <h3>Battery Modeling &amp; Control</h3>
-          <p>Physics-based degradation modeling for graphite–silicon composite electrodes. Model Predictive Control for Li-metal batteries with voltage, temperature, and electrolyte constraints.</p>
-        </div>
-        <div class="research-card reveal reveal-delay-3">
-          <div class="research-icon"><i class="fa-solid fa-brain"></i></div>
-          <h3>Physics-Informed Machine Learning</h3>
-          <p>Integrating physics-based priors into machine learning frameworks for predictive modeling of complex material systems and electrochemical processes.</p>
-        </div>
-        <div class="research-card reveal reveal-delay-4">
-          <div class="research-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <h3>Additive Manufacturing</h3>
-          <p>Fabrication of functional materials through additive manufacturing — including 4D-printed liquid crystal elastomers, Zn–V₂O₅ batteries, and PVDF–MoSe₂ piezoelectric sensors.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- ============ 1. ABOUT ME ============ -->
+      <section id="about">
+        <h1>About me</h1>
+        <p>I am Mehrab Hasan, a PhD candidate in the School of Aerospace and Mechanical Engineering at the <a href="https://www.ou.edu/" target="_blank" rel="noopener">University of Oklahoma</a>, planning to graduate in 2028. I have been working here as a Graduate Research Assistant in the Smart Materials and Intelligent Systems Lab since 2025. My PhD research focuses on the fabrication and additive manufacturing of multifunctional composites, smart materials, and piezoresistive strain sensors for structural health monitoring. I also develop AI/ML-driven performance prediction models for smart materials. As a Graduate Teaching Assistant in the same school, I also mentor undergraduate students in Solid Mechanics, Aerodynamics, and Design of Mechanical Components courses.</p>
+        <p>Previously, I completed my MS in Materials Science and Engineering at the University of North Texas, USA, in Summer 2024, where I gained extensive experimental research experience in next-generation Li-ion and beyond-Li-ion battery development, including Metal–CO<sub>2</sub> cells, additive manufacturing of Zn–V<sub>2</sub>O<sub>5</sub> cells, and PVDF–MoS<sub>2</sub> enhanced piezoelectric sensor development.</p>
+      </section>
 
-  <!-- PUBLICATIONS -->
-  <section id="publications">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">Published Works</p>
-        <h2 class="section-title">Publications</h2>
-        <div class="section-line"></div>
-      </div>
+      <!-- ============ 2. EDUCATIONAL QUALIFICATION ============ -->
+      <section id="education">
+        <h2>Educational Qualification</h2>
 
-      <!-- ── CITATION DASHBOARD ── -->
-      <div class="citation-dashboard reveal">
-        <div class="citation-stats-row">
-          <div class="citation-stat-card">
-            <div class="citation-stat-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <div class="citation-stat-number" id="totalCitations">—</div>
-            <div class="citation-stat-label">Total Citations</div>
-          </div>
-          <div class="citation-stat-card">
-            <div class="citation-stat-icon"><i class="fa-solid fa-chart-simple"></i></div>
-            <div class="citation-stat-number" id="hIndex">—</div>
-            <div class="citation-stat-label">H-Index</div>
-          </div>
-          <div class="citation-stat-card">
-            <div class="citation-stat-icon"><i class="fa-solid fa-file-lines"></i></div>
-            <div class="citation-stat-number">6</div>
-            <div class="citation-stat-label">Publications</div>
-          </div>
-        </div>
-        <div class="citation-updated">
-          Aggregated from multiple sources · <span id="citationDate">—</span>
-        </div>
-      </div>
-
-      <!-- ── PUBLICATION CARDS ── -->
-      <div class="pub-list">
-        <div class="pub-card reveal">
-          <span class="pub-number">09</span>
-          <div class="pub-info">
-            <h3>CLAIR: A Reference-Free Framework for In Situ Defect Detection in Fused Filament Fabrication Using Contra-Lateral Sampling and Inpainting Residuals</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong>; Thomas,Carter; Liu, Y.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Journal of Composite Science</span>
-              <span class="pub-year">2026</span>
-              <span class="pub-citation-badge" id="cite-0"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://www.mdpi.com/2504-4494/10/10/419" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="pub-card reveal">
-          <span class="pub-number">08</span>
-          <div class="pub-info">
-            <h3>Physics-Informed Machine Learning Framework for Predicting Joule Heating Activated Shape Recovery in Carbon Fiber Reinforced Shape Memory Epoxy Composites</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong>; Thomas,Carter; Liu, Y.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Journal of Composite Science</span>
-              <span class="pub-year">2026</span>
-              <span class="pub-citation-badge" id="cite-0"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://www.mdpi.com/2504-477X/10/10/537" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
-          </div>
+        <div class="edu-item">
+          <div class="deg">Ph.D. in Aerospace and Mechanical Engineering</div>
+          <div>University of Oklahoma, Norman, OK, USA</div>
+          <div class="meta">2024 – Present (Expected 2028) · PhD Candidate since October 2026</div>
         </div>
 
-        <div class="pub-card reveal">
-          <span class="pub-number">07</span>
-          <div class="pub-info">
-            <h3>A feedforward neural network based framework of the cyclic piezoresistive response of additively manufactured embedded strain sensors</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong>; Liu, Y.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Materials Letters: X</span>
-              <span class="pub-year">2026</span>
-              <span class="pub-citation-badge" id="cite-0"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://www.sciencedirect.com/science/article/pii/S2590150826000232?via%3Dihub" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
-          </div>
+        <div class="edu-item">
+          <div class="deg">M.S. in Materials Science and Engineering</div>
+          <div>University of North Texas, Denton, TX, USA</div>
+          <div class="meta">2022 – 2024</div>
         </div>
 
-        <div class="pub-card reveal">
-          <span class="pub-number">06</span>
-          <div class="pub-info">
-            <h3>Machine Learning Assisted Prediction of Recovered Angle of Carbon Fiber Reinforced Shape Memory Epoxy Composites</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong>; Ghamarian, I.; Liu, Y.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Macromolecular Rapid Communications</span>
-              <span class="pub-year">2026</span>
-              <span class="pub-citation-badge" id="cite-0"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://onlinelibrary.wiley.com/share/author/I4X9IU6U5RYWDQSA5SKT?target=10.1002/marc.202500962" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
-          </div>
+        <div class="edu-item">
+          <div class="deg">B.Sc. in Naval Architecture and Marine Engineering</div>
+          <div>Bangladesh University of Engineering and Technology (BUET), Dhaka, Bangladesh</div>
+          <div class="meta">2016 – 2021</div>
         </div>
+      </section>
 
-        <div class="pub-card reveal">
-          <span class="pub-number">05</span>
-          <div class="pub-info">
-            <h3>4D-Printed Liquid Crystal Elastomers: Printing Strategies, Actuation Mechanisms, and Emerging Applications</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong>; Liu, Y.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Journal of Composites Science</span>
-              <span class="pub-year">2025</span>
-              <span class="pub-citation-badge" id="cite-1"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://www.mdpi.com/2504-477X/9/11/633" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
+      <!-- ============ 3. RESEARCH INTERESTS ============ -->
+      <section id="research">
+        <h2>Research Interests</h2>
+        <ul>
+          <li>Additive manufacturing (3D/4D printing) of multifunctional composites</li>
+          <li>Smart materials: shape memory polymer composites and liquid crystal elastomers</li>
+          <li>Piezoresistive strain sensors for structural health monitoring (SHM)</li>
+          <li>Physics-informed machine learning and AI-driven performance prediction of materials</li>
+          <li>In-situ process monitoring and defect detection in additive manufacturing</li>
+          <li>Next-generation energy storage: Li-ion and beyond-Li-ion batteries</li>
+        </ul>
+      </section>
+
+      <!-- ============ 4. SKILLS ============ -->
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+
+          <div>
+            <h3><i class="fa-solid fa-layer-group"></i>Additive Manufacturing of Multifunctional Composites &amp; Strain Sensors</h3>
+            <ul>
+              <li>Direct ink writing (DIW) of MWCNT/epoxy sensing inks</li>
+              <li>FFF/FDM 3D printing; slicer software and G-code programming</li>
+              <li>Embedding printed sensors in fiber-reinforced composite laminates</li>
+              <li>Piezoresistive and cyclic electromechanical testing</li>
+              <li>Shape memory composite programming and Joule-heating recovery tests</li>
+              <li>ANSYS (structural FEA of composites and sensors)</li>
+              <li>DMA / TGA / DSC thermal and mechanical characterization</li>
+            </ul>
           </div>
+
+          <div>
+            <h3><i class="fa-solid fa-battery-three-quarters"></i>Battery Fabrication &amp; Characterization</h3>
+            <ul>
+              <li>Coin cell fabrication and Li-ion pouch cell disassembly in glovebox</li>
+              <li>Metal–CO<sub>2</sub> and Zn–V<sub>2</sub>O<sub>5</sub> cell fabrication; electrode preparation</li>
+              <li>EIS, cyclic voltammetry, and galvanostatic long-cycle testing</li>
+              <li>Battery testers and potentiostats: MACCOR, NEWARE, Gamry</li>
+              <li>Hydrothermal and CVD synthesis of MoS<sub>2</sub> / MoSe<sub>2</sub> catalysts</li>
+              <li>SEM, EDS, and Raman spectroscopy</li>
+              <li>Physics-based battery modeling (PyBaMM)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3><i class="fa-solid fa-brain"></i>AI / ML</h3>
+            <ul>
+              <li>Python (NumPy, Matplotlib, Jupyter) and MATLAB</li>
+              <li>Regression models: SVR, Gaussian process regression, random forest</li>
+              <li>Feedforward neural networks and Deep Operator Networks (DeepONet)</li>
+              <li>Physics-informed machine learning (PI-DeepONet, physics-embedded models)</li>
+              <li>Computer vision for in-situ AM defect detection</li>
+              <li>Model validation with small experimental datasets (k-fold, LOOCV)</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3><i class="fa-solid fa-cube"></i>Design &amp; Simulation</h3>
+            <ul>
+              <li>ANSYS</li>
+              <li>AutoCAD</li>
+              <li>Fusion 360</li>
+              <li>SolidWorks</li>
+              <li>Blender</li>
+            </ul>
+          </div>
+
         </div>
+      </section>
 
-        <div class="pub-card reveal">
-          <span class="pub-number">04</span>
-          <div class="pub-info">
-            <h3>Advanced Nanomaterial-based Biosensors for Clinical Diagnosis, Environmental Protection and Industrial Fermentation</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong><sup>+</sup>; Sakib, N.<sup>+</sup>; Sabroj, R.; Rahman, Z.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">Comprehensive Materials Processing</span>
-              <span class="pub-year">2024</span>
-              <span class="pub-citation-badge" id="cite-2"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-              <a href="https://www.sciencedirect.com/science/chapter/referencework/abs/pii/B9780323960205002740" target="_blank" class="pub-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Read</a>
-            </div>
-          </div>
-        </div>
+      <!-- ============ 5. JOB EXPERIENCE ============ -->
+      <section id="experience">
+        <h2>Job Experience</h2>
 
-        <div class="pub-card reveal">
-          <span class="pub-number">03</span>
-          <div class="pub-info">
-            <h3>Numerical Analysis of Steady Laminar Flow by Finite Volume Method in Connection with Simple Algorithm</h3>
-            <p class="pub-authors">Razib, R.; <strong>Hasan, M.</strong>; Bhuiyan, S.A.; Kader, M.S.</p>
-            <div class="pub-meta">
-              <span class="pub-journal">13th International Conference on Marine Technology</span>
-              <span class="pub-year">2023</span>
-              <span class="pub-citation-badge" id="cite-3"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card reveal">
-          <span class="pub-number">02</span>
-          <div class="pub-info">
-            <h3>Aerodynamic Analysis and Comparison between Axial Fan of Five and Seven Blades</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong></p>
-            <div class="pub-meta">
-              <span class="pub-journal">2023 ASEE Gulf-Southwest Annual Conference</span>
-              <span class="pub-year">2023</span>
-              <span class="pub-citation-badge" id="cite-4"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-card reveal">
-          <span class="pub-number">01</span>
-          <div class="pub-info">
-            <h3>Numerical Study of Aerodynamic Characteristics of Axial Fans with Different Blade Configurations</h3>
-            <p class="pub-authors"><strong>Hasan, M.</strong></p>
-            <div class="pub-meta">
-              <span class="pub-journal">Engineering Archive</span>
-              <span class="pub-year">2023</span>
-              <span class="pub-citation-badge" id="cite-5"><i class="fa-solid fa-spinner fa-spin" style="font-size:0.55em"></i></span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align:center" class="reveal">
-        <a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en" target="_blank" class="pub-scholar-btn">
-          <i class="fa-brands fa-google-scholar"></i> View All on Google Scholar
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">Where I've Worked</p>
-        <h2 class="section-title">Work Experience</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Graduate Research Assistant</span>
-            <span class="timeline-period">2024 – Present</span>
-          </div>
-          <p class="timeline-org">University of Oklahoma — School of Aerospace &amp; Mechanical Engineering</p>
-          <ul class="timeline-details">
-            <li>Developed ML-assisted shape recovery prediction models for shape memory epoxy composites</li>
-            <li>Designed experimental setups for Li-ion pouch cell disassembly and coin cell fabrication in glovebox environment</li>
-            <li>Developed physics-based degradation models for graphite–silicon composite electrodes</li>
-            <li>Implemented model predictive control for Li-metal batteries with voltage, temperature, and electrolyte constraints</li>
+        <!-- Job 1 -->
+        <div class="job">
+          <h3>Graduate Research Assistant</h3>
+          <p class="org">Smart Materials and Intelligent Systems Lab, School of Aerospace and Mechanical Engineering, University of Oklahoma</p>
+          <p class="date">2025 – Present</p>
+          <ul>
+            <li><span class="proj-title">Additively manufactured embedded strain sensors for SHM:</span> Fabricate direct-ink-written MWCNT/epoxy piezoresistive sensors embedded in fiber-reinforced composite laminates, characterize their cyclic response, and model it with feedforward neural networks and Physics-Informed Deep Operator Networks (PI-DeepONet).</li>
+            <li><span class="proj-title">Joule-heating-activated shape memory composites:</span> Fabricate and test carbon-fiber-reinforced shape memory epoxy composites and develop machine learning and physics-informed ML models to predict their shape recovery.</li>
+            <li><span class="proj-title">In-situ defect detection in fused filament fabrication:</span> Developed CLAIR, a reference-free defect detection framework using contra-lateral sampling and inpainting residuals.</li>
+            <li><span class="proj-title">4D-printed liquid crystal elastomers:</span> Authored a review on printing strategies, actuation mechanisms, and applications of 4D-printed LCEs.</li>
           </ul>
         </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Graduate Teaching Assistant</span>
-            <span class="timeline-period">2025 – Present</span>
-          </div>
-          <p class="timeline-org">University of Oklahoma — School of Aerospace &amp; Mechanical Engineering</p>
-          <ul class="timeline-details">
-            <li>Taught Aerodynamics, Solid Mechanics, SolidWorks &amp; ANSYS lab sessions</li>
+
+        <!-- Job 2 -->
+        <div class="job">
+          <h3>Graduate Teaching Assistant</h3>
+          <p class="org">School of Aerospace and Mechanical Engineering, University of Oklahoma</p>
+          <p class="date">2025 – Present</p>
+          <ul>
+            <li>Mentor undergraduate students in Solid Mechanics, Aerodynamics, and Design of Mechanical Components</li>
+            <li>Conducted SolidWorks and ANSYS lab sessions</li>
             <li>Mentored and supported 200+ undergraduate students across multiple courses</li>
           </ul>
         </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Graduate Research Assistant</span>
-            <span class="timeline-period">2023 – 2024</span>
-          </div>
-          <p class="timeline-org">University of North Texas — Department of Material Science and Engineering</p>
-          <ul class="timeline-details">
-            <li>Developed Iron–CO₂ batteries with 2D TMD catalysts achieving ~900% capacity improvement</li>
-            <li>Performed EIS, CV, and long-cycle testing for electrochemical performance evaluation</li>
-            <li>Performed material characterization tests using SEM, Raman Spectroscopy</li>
-            <li>Synthesized MoS₂ &amp; MoSe₂ using the hydrothermal method, CVD for catalyst development</li>
-            <li>Fabricated additively manufactured Zn–V₂O₅ batteries and PVDF–MoSe₂ piezoelectric sensors</li>
+
+        <!-- Job 3 -->
+        <div class="job">
+          <h3>Graduate Research Assistant</h3>
+          <p class="org">School of Aerospace and Mechanical Engineering, University of Oklahoma</p>
+          <p class="date">2024 – 2025</p>
+          <ul>
+            <li><span class="proj-title">Battery modeling and control:</span> Developed physics-based degradation models for graphite–silicon composite electrodes and implemented model predictive control for Li-metal batteries with voltage, temperature, and electrolyte constraints.</li>
+            <li><span class="proj-title">Battery experiments:</span> Designed experimental setups for Li-ion pouch cell disassembly and coin cell fabrication in a glovebox environment.</li>
           </ul>
         </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <span class="timeline-role">Graduate Teaching Assistant</span>
-            <span class="timeline-period">2022 – 2023</span>
-          </div>
-          <p class="timeline-org">University of North Texas — Department of Mechanical and Energy Engineering</p>
-          <ul class="timeline-details">
-            <li>Mentored five Senior Design groups (25 students) for the final project planning, design and fabrication of prototype</li>
-            <li>Mentored 65 students for the Thermodynamics course (undergraduate level), proctored and evaluated assignments and exams</li>
+
+        <!-- Job 4 -->
+        <div class="job">
+          <h3>Graduate Research Assistant</h3>
+          <p class="org">Department of Materials Science and Engineering, University of North Texas</p>
+          <p class="date">2023 – 2024</p>
+          <ul>
+            <li><span class="proj-title">Metal–CO<sub>2</sub> batteries:</span> Developed Iron–CO<sub>2</sub> batteries with 2D transition-metal dichalcogenide catalysts, achieving ~900% capacity improvement.</li>
+            <li><span class="proj-title">Catalyst synthesis and characterization:</span> Synthesized MoS<sub>2</sub> and MoSe<sub>2</sub> using hydrothermal and CVD methods; characterized materials with SEM and Raman spectroscopy.</li>
+            <li><span class="proj-title">Electrochemical testing:</span> Performed EIS, CV, and long-cycle testing for electrochemical performance evaluation.</li>
+            <li><span class="proj-title">Additive manufacturing of energy and sensing devices:</span> Fabricated additively manufactured Zn–V<sub>2</sub>O<sub>5</sub> batteries and PVDF–MoSe<sub>2</sub> piezoelectric sensors.</li>
           </ul>
         </div>
-      </div>
+
+        <!-- Job 5 -->
+        <div class="job">
+          <h3>Graduate Teaching Assistant</h3>
+          <p class="org">Department of Mechanical and Energy Engineering, University of North Texas</p>
+          <p class="date">2022 – 2023</p>
+          <ul>
+            <li>Mentored five Senior Design groups (25 students) through project planning, design, and prototype fabrication</li>
+            <li>Mentored 65 students in undergraduate Thermodynamics; proctored and evaluated assignments and exams</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ 6. PUBLICATIONS ============ -->
+      <section id="publications">
+        <h2>Publications</h2>
+        <div class="profile-btns">
+          <a class="btn" href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+          <a class="btn" href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i> ResearchGate</a>
+          <a class="btn" href="assets/Mehrab_Hasan_CV.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> Download CV</a>
+        </div>
+
+        <h3>Journal Articles</h3>
+        <ol class="pub-list" reversed>
+          <li>
+            <a class="pub-title" href="https://www.mdpi.com/2504-4494/10/10/419" target="_blank" rel="noopener">CLAIR: A Reference-Free Framework for In Situ Defect Detection in Fused Filament Fabrication Using Contra-Lateral Sampling and Inpainting Residuals</a><br />
+            <strong>Hasan, M.</strong>; Thomas, C.; Liu, Y.<br />
+            <span class="pub-venue">Journal of Manufacturing and Materials Processing</span>, 2026.
+          </li>
+          <li>
+            <a class="pub-title" href="https://www.mdpi.com/2504-477X/10/10/537" target="_blank" rel="noopener">Physics-Informed Machine Learning Framework for Predicting Joule Heating Activated Shape Recovery in Carbon Fiber Reinforced Shape Memory Epoxy Composites</a><br />
+            <strong>Hasan, M.</strong>; Thomas, C.; Liu, Y.<br />
+            <span class="pub-venue">Journal of Composites Science</span>, 2026.
+          </li>
+          <li>
+            <a class="pub-title" href="https://www.sciencedirect.com/science/article/pii/S2590150826000232" target="_blank" rel="noopener">A feedforward neural network based framework of the cyclic piezoresistive response of additively manufactured embedded strain sensors</a><br />
+            <strong>Hasan, M.</strong>; Liu, Y.<br />
+            <span class="pub-venue">Materials Letters: X</span>, 2026.
+          </li>
+          <li>
+            <a class="pub-title" href="https://onlinelibrary.wiley.com/share/author/I4X9IU6U5RYWDQSA5SKT?target=10.1002/marc.202500962" target="_blank" rel="noopener">Machine Learning Assisted Prediction of Recovered Angle of Carbon Fiber Reinforced Shape Memory Epoxy Composites</a><br />
+            <strong>Hasan, M.</strong>; Ghamarian, I.; Liu, Y.<br />
+            <span class="pub-venue">Macromolecular Rapid Communications</span>, 2026.
+          </li>
+          <li>
+            <a class="pub-title" href="https://www.mdpi.com/2504-477X/9/11/633" target="_blank" rel="noopener">4D-Printed Liquid Crystal Elastomers: Printing Strategies, Actuation Mechanisms, and Emerging Applications</a><br />
+            <strong>Hasan, M.</strong>; Liu, Y.<br />
+            <span class="pub-venue">Journal of Composites Science</span>, 2025. <span class="pub-tag">Review · Cover article</span>
+          </li>
+        </ol>
+
+        <h3>Book Chapter</h3>
+        <ol class="pub-list">
+          <li>
+            <a class="pub-title" href="https://www.sciencedirect.com/science/chapter/referencework/abs/pii/B9780323960205002740" target="_blank" rel="noopener">Advanced Nanomaterial-based Biosensors for Clinical Diagnosis, Environmental Protection and Industrial Fermentation</a><br />
+            <strong>Hasan, M.</strong><sup>+</sup>; Sakib, N.<sup>+</sup>; Sabroj, R.; Rahman, Z.<br />
+            <span class="pub-venue">Comprehensive Materials Processing</span>, 2024. <span class="muted small">(<sup>+</sup>equal contribution)</span>
+          </li>
+        </ol>
+
+        <h3>Conference Papers</h3>
+        <ol class="pub-list" reversed>
+          <li>
+            <span class="pub-title">Numerical Analysis of Steady Laminar Flow by Finite Volume Method in Connection with Simple Algorithm</span><br />
+            Razib, R.; <strong>Hasan, M.</strong>; Bhuiyan, S.A.; Kader, M.S.<br />
+            <span class="pub-venue">13th International Conference on Marine Technology</span>, 2023.
+          </li>
+          <li>
+            <span class="pub-title">Aerodynamic Analysis and Comparison between Axial Fan of Five and Seven Blades</span><br />
+            <strong>Hasan, M.</strong><br />
+            <span class="pub-venue">2023 ASEE Gulf-Southwest Annual Conference</span>, 2023.
+          </li>
+        </ol>
+
+        <h3>Preprint</h3>
+        <ol class="pub-list">
+          <li>
+            <a class="pub-title" href="https://doi.org/10.31224/3160" target="_blank" rel="noopener">Numerical Study of Aerodynamic Characteristics of Axial Fans with Different Blade Configurations</a><br />
+            <strong>Hasan, M.</strong><br />
+            <span class="pub-venue">Engineering Archive</span>, 2023.
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ 7. ACTIVITIES & UPDATES ============ -->
+      <!-- Newest first. The first 5 items show; the rest appear on "Show More". -->
+      <section id="updates">
+        <h2>Activities &amp; Updates</h2>
+        <ul class="news-list" id="newsList">
+          <li><span class="news-date">Nov 2026:</span> Presented a poster on our Physics-Informed Deep Operator Network work for piezoresistive response prediction of embedded strain sensors in structural composites at the <a href="https://www.ou.edu/coe/mse/2026-advanced-materials-workshop" target="_blank" rel="noopener">2026 Advanced Materials Workshop</a>, Gallogly College of Engineering, University of Oklahoma.</li>
+          <li><span class="news-date">Oct 2026:</span> Presented “Physics-Informed Deep Operator Network for Piezoresistive Response Prediction of Additively Manufactured and Embedded Strain Sensors in Structural Composites” at the Graduate Student Poster Fair in front of the Board of Advisors of the University of Oklahoma, and received valuable feedback on the ongoing research and its future directions.</li>
+          <li><span class="news-date">Oct 2026:</span> Passed the General Exam and became a PhD Candidate. [<a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_phdcandidate-ou-phdlife-activity-7520526091069939712-arFn" target="_blank" rel="noopener">LinkedIn</a>]</li>
+          <li><span class="news-date">Sep 2026:</span> Presented “Physics-Informed Deep Operator Network for Predicting Piezoresistive Response of 3D-Printed Embedded Strain Sensors in Structural Composites” at the American Society for Composites (ASC) 41st Annual Technical Conference, Madison, WI. [<a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_asc2026-americansocietyforcomposites-compositematerials-activity-7500596292964978688-o-G7" target="_blank" rel="noopener">LinkedIn</a>]</li>
+          <li><span class="news-date">Apr 2026:</span> Awarded the Mathnasium Engineering Scholarship for the 2026–2027 academic session at the University of Oklahoma.</li>
+          <li class="news-hidden"><span class="news-date">Apr 2026:</span> Presented “Development and Application of Machine Learning Framework for Predicting Shape Recovery of CF-Reinforced Shape Memory Epoxy Composites under Joule Heating” at the 44th Annual Oklahoma AIAA/ASME Symposium. [<a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_aiaa-asme-ocu-activity-7448791548713943040-Njpw" target="_blank" rel="noopener">LinkedIn</a>]</li>
+          <li class="news-hidden"><span class="news-date">Feb 2026:</span> Presented my PhD research at the Graduate College Research Showcase, University of Oklahoma. [<a href="https://www.linkedin.com/feed/update/urn:li:activity:7432961166097956865/" target="_blank" rel="noopener">LinkedIn</a>]</li>
+        </ul>
+        <button class="btn" id="newsToggle" type="button">Show More</button>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="page__footer">
+    <div class="page__footer-inner">
+      <ul class="page__footer-follow">
+        <li><strong>Follow:</strong></li>
+        <li><a href="https://www.linkedin.com/in/mehrab-hasan-974471129/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a></li>
+        <li><a href="https://github.com/mehrabhasan" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a></li>
+        <li><a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&amp;hl=en" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i> Google Scholar</a></li>
+        <li><a href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i> ResearchGate</a></li>
+      </ul>
+      <p>&copy; <span id="year">2026</span> Mehrab Hasan. Layout based on the AcademicPages theme.</p>
     </div>
-  </section>
-
-  <section id="activities">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">News &amp; Activities</p>
-        <h2 class="section-title">Activities</h2>
-        <div class="section-line"></div>
-      </div>
-
-      <div class="activities-list reveal">
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">Oct<span class="activity-date-year">2026</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">Graduate Student Poster Fair-Graduate College of Engineering</div>
-            <div class="activity-item-desc">Presented our work on "Physics-Informed Deep Operator Network for Piezoresistive Response Prediction of Additively Manufactured and Embedded Strain Sensors in Structural Composites" infront of the Board of Advisors and recieved their valuable feedback on the advancement of the ongoing research and future possibilities. </div>
-            
-          </div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">oCT<span class="activity-date-year">2026</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">PhD Candidacy</div>
-            <div class="activity-item-desc">Passed the General Exam and became a PhD Candidate</div>
-            <a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_phdcandidate-ou-phdlife-activity-7520526091069939712-arFn"
-               target="_blank" class="activity-item-link">
-              <i class="fa-brands fa-linkedin-in"></i> View on LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">Sep<span class="activity-date-year">2026</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">American Society for Composites 41st Annual Technical Conference</div>
-            <div class="activity-item-desc">Presented "Physics-Informed Deep Operator Network for Predicting Piezoresistive Response of 3D-Printed Embedded Strain Sensors in Structural Composites"</div>
-            <a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_asc2026-americansocietyforcomposites-compositematerials-activity-7500596292964978688-o-G7"
-               target="_blank" class="activity-item-link">
-              <i class="fa-brands fa-linkedin-in"></i> View on LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">Apr<span class="activity-date-year">2026</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">Mathnasium Engineering Scholarship 2026–2027</div>
-            <div class="activity-item-desc">Awarded the Mathnasium Engineering Scholarship for the 2026–2027 academic session at the University of Oklahoma.</div>
-          </div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">Apr<span class="activity-date-year">2026</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">44th Annual Oklahoma AIAA/ASME Symposium</div>
-            <div class="activity-item-desc">Presented "Development and Application of Machine Learning Framework for Predicting Shape Recovery of CF-Reinforced Shape Memory Epoxy Composites under Joule Heating."</div>
-            <a href="https://www.linkedin.com/posts/mehrab-hasan-974471129_aiaa-asme-ocu-activity-7448791548713943040-Njpw"
-               target="_blank" class="activity-item-link">
-              <i class="fa-brands fa-linkedin-in"></i> View on LinkedIn
-            </a>
-          </div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-date-col">
-            <span class="activity-date">Feb<span class="activity-date-year">2025</span></span>
-          </div>
-          <div class="activity-dot-col">
-            <div class="activity-dot"></div>
-          </div>
-          <div class="activity-content-col">
-            <div class="activity-item-title">Graduate College Research Showcase — University of Oklahoma</div>
-            <div class="activity-item-desc">Presented current PhD research at the Graduate College Research Showcase at the University of Oklahoma.</div>
-            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7432961166097956865/"
-               target="_blank" class="activity-item-link">
-              <i class="fa-brands fa-linkedin-in"></i> View on LinkedIn
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-label">Get In Touch</p>
-        <h2 class="section-title">Contact</h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="contact-wrapper reveal">
-        <p>I'm always interested in discussing research collaborations, opportunities, or just connecting with fellow researchers. Feel free to reach out!</p>
-        <a href="mailto:mehrab.hasan3513@gmail.com" class="contact-email">
-          <i class="fa-solid fa-envelope"></i> mehrab.hasan3513@gmail.com
-        </a>
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/mehrab-hasan-974471129/" target="_blank" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="https://github.com/mehrabhasan" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="https://scholar.google.com/citations?user=aQbPpQMAAAAJ&hl=en" target="_blank" class="social-link" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
-          <a href="https://www.researchgate.net/profile/Mehrab-Hasan-2" target="_blank" class="social-link" title="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Designed &amp; built by <a href="#">Mehrab Hasan</a> · &copy; 2025</p>
   </footer>
 
   <script>
-
-    /* ── 1. LOADER ── */
-    window.addEventListener('load', function () {
-      setTimeout(function () { document.getElementById('loader').classList.add('hidden'); }, 400);
-    });
-
-    /* ── 2. NAVBAR ── */
     (function () {
-      var nb = document.getElementById('navbar');
-      var pb = document.getElementById('scrollProgress');
-      var ss = document.querySelectorAll('section[id]');
-      var na = document.querySelectorAll('.nav-links a');
-      function onS() {
-        var y = window.scrollY;
-        nb.classList.toggle('scrolled', y > 50);
-        var d = document.documentElement.scrollHeight - window.innerHeight;
-        if (d > 0) pb.style.width = (y / d * 100) + '%';
-        var c = '';
-        ss.forEach(function (s) { if (y >= s.offsetTop - 200) c = s.id; });
-        na.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + c); });
-      }
-      window.addEventListener('scroll', onS, { passive: true });
-      onS();
-    })();
-
-    /* ── 3. MOBILE MENU ── */
-    (function () {
-      var b = document.getElementById('hamburger');
-      var n = document.getElementById('navLinks');
-      b.addEventListener('click', function () { b.classList.toggle('open'); n.classList.toggle('open'); });
-      n.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { b.classList.remove('open'); n.classList.remove('open'); });
+      // Mobile navigation menu
+      var navToggle = document.getElementById('navToggle');
+      var navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', function () { navLinks.classList.toggle('open'); });
+      navLinks.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { navLinks.classList.remove('open'); });
       });
+
+      // Mobile "Follow" dropdown in the sidebar
+      document.getElementById('followToggle').addEventListener('click', function () {
+        document.getElementById('authorUrls').classList.toggle('open');
+      });
+
+      // Light / dark theme toggle
+      var root = document.documentElement;
+      var themeBtn = document.getElementById('themeToggle');
+      function setTheme(t) {
+        if (t === 'dark') { root.setAttribute('data-theme', 'dark'); themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>'; }
+        else { root.removeAttribute('data-theme'); themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>'; }
+      }
+      themeBtn.addEventListener('click', function () {
+        setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      // "Show More / Show Less" for Activities & Updates
+      var list = document.getElementById('newsList');
+      var newsBtn = document.getElementById('newsToggle');
+      if (!list.querySelector('.news-hidden')) { newsBtn.style.display = 'none'; }
+      newsBtn.addEventListener('click', function () {
+        var open = list.classList.toggle('expanded');
+        newsBtn.textContent = open ? 'Show Less' : 'Show More';
+      });
+
+      // Highlight the current section in the top menu
+      var sections = document.querySelectorAll('main section[id]');
+      var links = document.querySelectorAll('.nav-links a[href^="#"]');
+      function onScroll() {
+        var y = window.scrollY + 120, current = 'about';
+        sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 2) current = sections[sections.length - 1].id;
+        links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
     })();
-
-    /* ── 4. SCROLL REVEAL ── */
-    (function () {
-      var io = new IntersectionObserver(function (e) {
-        e.forEach(function (x) {
-          if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    })();
-
-    /* ── 5. PARTICLES ── */
-    (function () {
-      var c = document.getElementById('particles-canvas');
-      if (!c) return;
-      var x = c.getContext('2d'), W, H, P, m = { x: null, y: null };
-      function rz() { W = c.width = c.parentElement.offsetWidth; H = c.height = c.parentElement.offsetHeight; }
-      window.addEventListener('resize', rz); rz();
-      c.addEventListener('mousemove', function (e) { var r = c.getBoundingClientRect(); m.x = e.clientX - r.left; m.y = e.clientY - r.top; });
-      c.addEventListener('mouseleave', function () { m.x = null; m.y = null; });
-      function D() { this.x = Math.random() * W; this.y = Math.random() * H; this.vx = (Math.random() - .5) * .4; this.vy = (Math.random() - .5) * .4; this.r = Math.random() * 1.8 + .8; this.o = Math.random() * .5 + .2; }
-      D.prototype.u = function () { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > W) this.vx *= -1; if (this.y < 0 || this.y > H) this.vy *= -1; };
-      D.prototype.d = function () { x.beginPath(); x.arc(this.x, this.y, this.r, 0, Math.PI * 2); x.fillStyle = 'rgba(0,198,255,' + this.o + ')'; x.fill(); };
-      function iP() { var n = Math.min(Math.floor(W * H / 9000), 120); P = []; for (var i = 0; i < n; i++) P.push(new D()); }
-      iP(); window.addEventListener('resize', function () { rz(); iP(); });
-      function ln() {
-        for (var i = 0; i < P.length; i++) {
-          for (var j = i + 1; j < P.length; j++) {
-            var dx = P[i].x - P[j].x, dy = P[i].y - P[j].y, d = Math.sqrt(dx * dx + dy * dy);
-            if (d < 140) { x.beginPath(); x.moveTo(P[i].x, P[i].y); x.lineTo(P[j].x, P[j].y); x.strokeStyle = 'rgba(0,198,255,' + .12 * (1 - d / 140) + ')'; x.lineWidth = .6; x.stroke(); }
-          }
-          if (m.x !== null) {
-            var dx2 = P[i].x - m.x, dy2 = P[i].y - m.y, d2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
-            if (d2 < 160) { x.beginPath(); x.moveTo(P[i].x, P[i].y); x.lineTo(m.x, m.y); x.strokeStyle = 'rgba(127,90,240,' + .25 * (1 - d2 / 160) + ')'; x.lineWidth = .8; x.stroke(); }
-          }
-        }
-      }
-      (function lp() { x.clearRect(0, 0, W, H); P.forEach(function (p) { p.u(); p.d(); }); ln(); requestAnimationFrame(lp); })();
-    })();
-
-    /* ══════════════════════════════════════════════════════════════
-       6. MULTI-SOURCE CITATION TRACKING SYSTEM
-       ══════════════════════════════════════════════════════════════
-       
-       This system fetches citation data from multiple APIs:
-       - Semantic Scholar (primary source via DOI)
-       - Crossref (citation metadata)
-       - OpenAlex (comprehensive academic data)
-       
-       For each paper, it queries multiple sources and uses the 
-       HIGHEST citation count found across all sources.
-    ═══════════════════════════════════════════════════════════════ */
-
-    (function () {
-      
-      // Paper database with DOIs
-      var papers = [
-        { 
-          doi: '10.1002/marc.202500962', 
-          badgeId: 'cite-0',
-          title: 'Machine Learning Assisted Prediction'
-        },
-        { 
-          doi: '10.3390/jcs9110633', 
-          badgeId: 'cite-1',
-          title: '4D-Printed Liquid Crystal Elastomers'
-        },
-        { 
-          doi: '10.1016/B978-0-323-96020-5.00274-0', 
-          badgeId: 'cite-2',
-          title: 'Advanced Nanomaterial-based Biosensors'
-        },
-        { 
-          doi: null,  // No DOI available
-          badgeId: 'cite-3',
-          title: 'Numerical Analysis of Steady Laminar Flow',
-          manualCount: 3  // Manual count from conference proceedings
-        },
-        { 
-          doi: null,  // No DOI available
-          badgeId: 'cite-4',
-          title: 'Aerodynamic Analysis and Comparison',
-          manualCount: 0
-        },
-        { 
-          doi: '10.31224/3160', 
-          badgeId: 'cite-5',
-          title: 'Numerical Study of Aerodynamic Characteristics'
-        }
-      ];
-
-      var citationCounts = [];
-      var completedQueries = 0;
-
-      // FETCH FROM SEMANTIC SCHOLAR
-      function fetchSemanticScholar(doi) {
-        return fetch('https://api.semanticscholar.org/graph/v1/paper/DOI:' + encodeURIComponent(doi) + '?fields=citationCount')
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(d) { 
-            return (d && typeof d.citationCount === 'number') ? d.citationCount : 0;
-          })
-          .catch(function() { return 0; });
-      }
-
-      // FETCH FROM CROSSREF
-      function fetchCrossref(doi) {
-        return fetch('https://api.crossref.org/works/' + encodeURIComponent(doi))
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(d) {
-            if (d && d.message && d.message['is-referenced-by-count']) {
-              return d.message['is-referenced-by-count'];
-            }
-            return 0;
-          })
-          .catch(function() { return 0; });
-      }
-
-      // FETCH FROM OPENALEX
-      function fetchOpenAlex(doi) {
-        return fetch('https://api.openalex.org/works/doi:' + encodeURIComponent(doi))
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(d) {
-            if (d && d.cited_by_count) {
-              return d.cited_by_count;
-            }
-            return 0;
-          })
-          .catch(function() { return 0; });
-      }
-
-      // Fetch from ALL sources and return the MAX
-      function fetchAllSources(doi) {
-        return Promise.all([
-          fetchSemanticScholar(doi),
-          fetchCrossref(doi),
-          fetchOpenAlex(doi)
-        ]).then(function(results) {
-          var max = Math.max.apply(null, results);
-          console.log('DOI ' + doi + ' citation counts:', results, '→ Using max:', max);
-          return max;
-        });
-      }
-
-      // Update individual badge
-      function setBadge(badgeId, count) {
-        var el = document.getElementById(badgeId);
-        if (!el) return;
-        el.innerHTML = '<i class="fa-solid fa-quote-left"></i> ' + count + ' citation' + (count !== 1 ? 's' : '');
-      }
-
-      // Update dashboard
-      function updateDashboard() {
-        var total = citationCounts.reduce(function(a, b) { return a + b; }, 0);
-        
-        // Calculate h-index
-        var sorted = citationCounts.slice().sort(function(a, b) { return b - a; });
-        var h = 0;
-        for (var i = 0; i < sorted.length; i++) {
-          if (sorted[i] >= i + 1) h = i + 1;
-          else break;
-        }
-
-        // Animate numbers
-        animateNum(document.getElementById('totalCitations'), total);
-        animateNum(document.getElementById('hIndex'), h);
-        
-        document.getElementById('citationDate').textContent = 
-          new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      }
-
-      // Smooth number animation
-      function animateNum(el, target) {
-        if (!el) return;
-        if (target === 0) { el.textContent = '0'; return; }
-        var start = null, dur = 900;
-        function step(ts) {
-          if (!start) start = ts;
-          var p = Math.min((ts - start) / dur, 1);
-          el.textContent = Math.floor(p * target);
-          if (p < 1) requestAnimationFrame(step);
-          else el.textContent = target;
-        }
-        requestAnimationFrame(step);
-      }
-
-      // Process papers sequentially with delay
-      function processPaper(index) {
-        if (index >= papers.length) {
-          updateDashboard();
-          return;
-        }
-
-        var paper = papers[index];
-        
-        if (!paper.doi) {
-          // Use manual count for papers without DOI
-          citationCounts[index] = paper.manualCount || 0;
-          setBadge(paper.badgeId, citationCounts[index]);
-          completedQueries++;
-          setTimeout(function() { processPaper(index + 1); }, 200);
-          return;
-        }
-
-        // Fetch from all sources
-        fetchAllSources(paper.doi).then(function(maxCount) {
-          citationCounts[index] = maxCount;
-          setBadge(paper.badgeId, maxCount);
-          completedQueries++;
-          
-          // Add 500ms delay between queries to avoid rate limiting
-          setTimeout(function() { processPaper(index + 1); }, 500);
-        }).catch(function(err) {
-          console.error('Error fetching citations for', paper.title, err);
-          citationCounts[index] = 0;
-          setBadge(paper.badgeId, 0);
-          completedQueries++;
-          setTimeout(function() { processPaper(index + 1); }, 500);
-        });
-      }
-
-      // Initialize arrays
-      for (var i = 0; i < papers.length; i++) {
-        citationCounts.push(0);
-      }
-
-      // Start processing when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() { processPaper(0); });
-      } else {
-        processPaper(0);
-      }
-
-    })();
-
   </script>
 </body>
 </html>
